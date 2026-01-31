@@ -1,0 +1,1046 @@
+[
+  {
+    "id": "lips-lipstick-001",
+    "slug": "matte-liquid-lipstick",
+    "name": "Matte Liquid Lipstick",
+    "category": "lips",
+    "subcategory": "lipstick",
+    "description": "Rouge à lèvres liquide mat longue tenue. Fini velouté intense inspiré de l'élégance italienne.",
+    "price": 190,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Matte Red",
+        "colorCode": "#8B0000",
+        "stock": 50,
+        "images": [
+          "/images/products/lips/lipstick/matte-liquid-lipstick.jpg",
+          "/images/products/lips/lipstick/matte-liquid-lipstick-2.jpg",
+          "/images/products/lips/lipstick/matte-liquid-lipstick-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/lipstick/matte-liquid-lipstick.jpg"
+  },
+  {
+    "id": "lips-lipstick-002",
+    "slug": "lipstick-rosso-le-chic",
+    "name": "Lipstick Rosso Le Chic",
+    "category": "lips",
+    "subcategory": "lipstick",
+    "description": "L'élégance à l'italienne. Rouge classique hautement pigmenté pour un look sophistiqué.",
+    "price": 210,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Chic Red",
+        "colorCode": "#B22222",
+        "stock": 30,
+        "images": [
+          "/images/products/lips/lipstick/lipstick-rosso-le-chic.jpg",
+          "/images/products/lips/lipstick/lipstick-rosso-le-chic-2.jpg",
+          "/images/products/lips/lipstick/lipstick-rosso-le-chic-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/lipstick/lipstick-rosso-le-chic.jpg"
+  },
+  {
+    "id": "lips-lipstick-003",
+    "slug": "velvet-lipstick",
+    "name": "Velvet Lipstick",
+    "category": "lips",
+    "subcategory": "lipstick",
+    "description": "Fini velours soyeux pour des lèvres douces et confortables. Texture crémeuse exceptionnelle.",
+    "price": 180,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Velvet Rose",
+        "colorCode": "#D8A7B1",
+        "stock": 25,
+        "images": [
+          "/images/products/lips/lipstick/velvet-lipstick.jpg",
+          "/images/products/lips/lipstick/velvet-lipstick-2.jpg",
+          "/images/products/lips/lipstick/velvet-lipstick-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/lipstick/velvet-lipstick.jpg"
+  },
+  {
+    "id": "lips-lipstick-004",
+    "slug": "lipstick-rouge",
+    "name": "Lipstick Rouge",
+    "category": "lips",
+    "subcategory": "lipstick",
+    "description": "Rouge classique intensément pigmenté. La quintessence du rouge parfait.",
+    "price": 160,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Pure Rouge",
+        "colorCode": "#FF0000",
+        "stock": 45,
+        "images": [
+          "/images/products/lips/lipstick/lipstick-rouge.jpg",
+          "/images/products/lips/lipstick/lipstick-rouge-2.jpg",
+          "/images/products/lips/lipstick/lipstick-rouge-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/lipstick/lipstick-rouge.jpg"
+  },
+  {
+    "id": "lips-gloss-001",
+    "slug": "gloss-long-tenue-mat",
+    "name": "Gloss Long Tenue Mat",
+    "category": "lips",
+    "subcategory": "gloss",
+    "description": "Gloss mat longue tenue pour des lèvres veloutées et confortables.",
+    "price": 150,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Nude Mat",
+        "colorCode": "#E2B5A0",
+        "stock": 40,
+        "images": [
+          "/images/products/lips/gloss/gloss-long-tenue-mat.jpeg",
+          "/images/products/lips/gloss/gloss-long-tenue-mat-2.jpeg",
+          "/images/products/lips/gloss/gloss-long-tenue-mat-3.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/gloss/gloss-long-tenue-mat.jpeg"
+  },
+  {
+    "id": "lips-lip-pencil-001",
+    "slug": "lip-pencil-le-chic",
+    "name": "Lip Pencil Le Chic",
+    "category": "lips",
+    "subcategory": "lip-pencil",
+    "description": "Crayon contour des lèvres pour un tracé précis et élégant.",
+    "price": 95,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Universal Nude",
+        "colorCode": "#D2B48C",
+        "stock": 60,
+        "images": [
+          "/images/products/lips/lip-pencil/lip-pencil-le-chic.jpg",
+          "/images/products/lips/lip-pencil/lip-pencil-le-chic-2.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/lip-pencil/lip-pencil-le-chic.jpg"
+  },
+  {
+    "id": "lips-lip-pencil-002",
+    "slug": "waterproof-lip-pencil",
+    "name": "Waterproof Lip Pencil",
+    "category": "lips",
+    "subcategory": "lip-pencil",
+    "description": "Crayon lèvres waterproof résistant à l'eau et longue tenue.",
+    "price": 110,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Berry",
+        "colorCode": "#800020",
+        "stock": 55,
+        "images": [
+          "/images/products/lips/lip-pencil/waterproof-lip-pencil-2.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/lips/lip-pencil/waterproof-lip-pencil-2.jpg"
+  },
+  {
+    "id": "eyes-mascara-001",
+    "slug": "full-lash-mascara",
+    "name": "Full Lash Mascara",
+    "category": "eyes",
+    "subcategory": "mascara",
+    "description": "Mascara volume maximal pour des cils pleins et fournis.",
+    "price": 145,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Black",
+        "colorCode": "#000000",
+        "stock": 100,
+        "images": [
+          "/images/products/eyes/mascara/full-lash-mascara.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/mascara/full-lash-mascara.jpg"
+  },
+  {
+    "id": "eyes-mascara-002",
+    "slug": "high-volume-mascara",
+    "name": "High Volume Mascara",
+    "category": "eyes",
+    "subcategory": "mascara",
+    "description": "Mascara haute performance pour des cils démultipliés et intenses.",
+    "price": 150,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Intense Black",
+        "colorCode": "#000000",
+        "stock": 85,
+        "images": [
+          "/images/products/eyes/mascara/high-volume-mascara.jpg",
+          "/images/products/eyes/mascara/high-volume-mascara-2.jpg",
+          "/images/products/eyes/mascara/high-volume-mascara-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/mascara/high-volume-mascara.jpg"
+  },
+  {
+    "id": "eyes-mascara-003",
+    "slug": "super-lash-mascara",
+    "name": "Super Lash Mascara",
+    "category": "eyes",
+    "subcategory": "mascara",
+    "description": "Mascara longueur infinie pour un regard spectaculaire.",
+    "price": 140,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Pure Black",
+        "colorCode": "#000000",
+        "stock": 90,
+        "images": [
+          "/images/products/eyes/mascara/super-lash-mascara.jpg",
+          "/images/products/eyes/mascara/super-lash-mascara-2.jpg",
+          "/images/products/eyes/mascara/super-lash-mascara-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/mascara/super-lash-mascara.jpg"
+  },
+  {
+    "id": "eyes-mascara-004",
+    "slug": "mascara-super-lash-waterproof",
+    "name": "Mascara Super Lash Waterproof",
+    "category": "eyes",
+    "subcategory": "mascara",
+    "description": "Mascara waterproof tenue 24h pour un regard intense toute la journée.",
+    "price": 155,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "WP Black",
+        "colorCode": "#000000",
+        "stock": 70,
+        "images": [
+          "/images/products/eyes/mascara/mascara-super-lash-waterproof.jpg",
+          "/images/products/eyes/mascara/mascara-super-lash-waterproof-2.jpg",
+          "/images/products/eyes/mascara/mascara-super-lash-waterproof-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/mascara/mascara-super-lash-waterproof.jpg"
+  },
+  {
+    "id": "eyes-mascara-005",
+    "slug": "lash-and-brow-mascara-gel",
+    "name": "Lash & Brow Mascara Gel",
+    "category": "eyes",
+    "subcategory": "mascara",
+    "description": "Gel fixateur transparent pour cils et sourcils naturels.",
+    "price": 120,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Clear",
+        "colorCode": "transparent",
+        "stock": 60,
+        "images": [
+          "/images/products/eyes/mascara/lash-&-brow-mascara-gel.jpg",
+          "/images/products/eyes/mascara/lash-&-brow-mascara-gel-2.jpg",
+          "/images/products/eyes/mascara/lash-&-brow-mascara-gel-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/mascara/lash-&-brow-mascara-gel.jpg"
+  },
+  {
+    "id": "eyes-eyeliners-001",
+    "slug": "ultra-black-eyeliner-and-khol-waterproof",
+    "name": "Ultra Black Eyeliner & Khol Waterproof",
+    "category": "eyes",
+    "subcategory": "eyeliners",
+    "description": "Eyeliner 2-en-1 ultra noir waterproof pour un regard intense.",
+    "price": 135,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Ultra Black",
+        "colorCode": "#000000",
+        "stock": 80,
+        "images": [
+          "/images/products/eyes/eyeliners/ultra-black-eyeliner-&-khol-waterproof.jpg",
+          "/images/products/eyes/eyeliners/ultra-black-eyeliner-&-khol-waterproof-2.jpg",
+          "/images/products/eyes/eyeliners/ultra-black-eyeliner-&-khol-waterproof-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeliners/ultra-black-eyeliner-&-khol-waterproof.jpg"
+  },
+  {
+    "id": "eyes-eyeliners-002",
+    "slug": "felt-tip-liner",
+    "name": "Felt Tip Liner",
+    "category": "eyes",
+    "subcategory": "eyeliners",
+    "description": "Eyeliner feutre pour une application facile et précise.",
+    "price": 120,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Black",
+        "colorCode": "#000000",
+        "stock": 75,
+        "images": [
+          "/images/products/eyes/eyeliners/felt-tip-liner.jpg",
+          "/images/products/eyes/eyeliners/felt-tip-liner-2.jpg",
+          "/images/products/eyes/eyeliners/felt-tip-liner-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeliners/felt-tip-liner.jpg"
+  },
+  {
+    "id": "eyes-eyeliners-003",
+    "slug": "eyeliner-wp",
+    "name": "Eyeliner WP",
+    "category": "eyes",
+    "subcategory": "eyeliners",
+    "description": "Eyeliner waterproof résistant pour une tenue parfaite.",
+    "price": 115,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "WP Black",
+        "colorCode": "#000000",
+        "stock": 60,
+        "images": [
+          "/images/products/eyes/eyeliners/eyeliner-wp.jpg",
+          "/images/products/eyes/eyeliners/eyeliner-wp-2.jpg",
+          "/images/products/eyes/eyeliners/eyeliner-wp-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeliners/eyeliner-wp.jpg"
+  },
+  {
+    "id": "eyes-eyeliners-004",
+    "slug": "felt-tip-matte-waterproof",
+    "name": "Felt Tip Matte Waterproof",
+    "category": "eyes",
+    "subcategory": "eyeliners",
+    "description": "Eyeliner feutre mat waterproof pour un look sophistiqué.",
+    "price": 130,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Matte Black",
+        "colorCode": "#000000",
+        "stock": 50,
+        "images": [
+          "/images/products/eyes/eyeliners/felt-tip-matte-waterproof.jpg",
+          "/images/products/eyes/eyeliners/felt-tip-matte-waterproof-2.jpg",
+          "/images/products/eyes/eyeliners/felt-tip-matte-waterproof-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeliners/felt-tip-matte-waterproof.jpg"
+  },
+  {
+    "id": "eyes-eyeshadows-001",
+    "slug": "smokey-eyes-palette",
+    "name": "Smokey Eyes Palette",
+    "category": "eyes",
+    "subcategory": "eyeshadows",
+    "description": "Palette smokey eyes pour un regard intense et mystérieux.",
+    "price": 250,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Nocturnal",
+        "colorCode": "#2F4F4F",
+        "stock": 35,
+        "images": [
+          "/images/products/eyes/eyeshadows/smokey-eyes-palette.jpeg",
+          "/images/products/eyes/eyeshadows/smokey-eyes-palette-2.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeshadows/smokey-eyes-palette.jpeg"
+  },
+  {
+    "id": "eyes-eyeshadows-002",
+    "slug": "wet-and-dry-eyeshadow",
+    "name": "Wet & Dry Eyeshadow",
+    "category": "eyes",
+    "subcategory": "eyeshadows",
+    "description": "Fard à paupières modulable wet & dry pour un effet sur mesure.",
+    "price": 145,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Iridescent",
+        "colorCode": "#FFC0CB",
+        "stock": 40,
+        "images": [
+          "/images/products/eyes/eyeshadows/wet-&-dry-eyeshadow.jpg",
+          "/images/products/eyes/eyeshadows/wet-&-dry-eyeshadow-2.jpg",
+          "/images/products/eyes/eyeshadows/wet-&-dry-eyeshadow-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeshadows/wet-&-dry-eyeshadow.jpg"
+  },
+  {
+    "id": "eyes-eyeshadows-003",
+    "slug": "eyebrow-kit",
+    "name": "Eyebrow Kit",
+    "category": "eyes",
+    "subcategory": "eyeshadows",
+    "description": "Kit complet pour sourcils parfaits avec poudres et accessoires.",
+    "price": 190,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Ultimate Kit",
+        "colorCode": "#8B4513",
+        "stock": 25,
+        "images": [
+          "/images/products/eyes/eyeshadows/eyebrow-kit.jpg",
+          "/images/products/eyes/eyeshadows/eyebrow-kit-2.jpg",
+          "/images/products/eyes/eyeshadows/eyebrow-kit-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/eyeshadows/eyebrow-kit.jpg"
+  },
+  {
+    "id": "eyes-pencil-001",
+    "slug": "waterliner-kajal-pencil",
+    "name": "Waterliner Kajal Pencil",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Crayon kajal waterproof pour un regard profond.",
+    "price": 90,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Black",
+        "colorCode": "#000000",
+        "stock": 100,
+        "images": [
+          "/images/products/eyes/Pencil/waterliner-kajal-pencil.jpg",
+          "/images/products/eyes/Pencil/waterliner-kajal-pencil-2.jpg",
+          "/images/products/eyes/Pencil/waterliner-kajal-pencil-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/waterliner-kajal-pencil.jpg"
+  },
+  {
+    "id": "eyes-pencil-002",
+    "slug": "crayon-khol-waterproof",
+    "name": "Crayon Khol Waterproof",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Crayon khôl waterproof résistant à l'humidité.",
+    "price": 105,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Midnight Black",
+        "colorCode": "#000000",
+        "stock": 80,
+        "images": [
+          "/images/products/eyes/Pencil/crayon-khol-waterproof.jpg",
+          "/images/products/eyes/Pencil/crayon-khol-waterproof-2.jpg",
+          "/images/products/eyes/Pencil/crayon-khol-waterproof-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/crayon-khol-waterproof.jpg"
+  },
+  {
+    "id": "eyes-pencil-003",
+    "slug": "khol-pencil-wp",
+    "name": "Khol Pencil WP",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Khôl pencil waterproof classique.",
+    "price": 100,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Deep Black",
+        "colorCode": "#000000",
+        "stock": 70,
+        "images": [
+          "/images/products/eyes/Pencil/khol-pencil-wp.jpg",
+          "/images/products/eyes/Pencil/khol-pencil-wp-2.jpg",
+          "/images/products/eyes/Pencil/khol-pencil-wp-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/khol-pencil-wp.jpg"
+  },
+  {
+    "id": "eyes-pencil-004",
+    "slug": "soft-eye-pencil-wp",
+    "name": "Soft Eye Pencil WP",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Crayon yeux doux waterproof pour une application confortable.",
+    "price": 95,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Soft Black",
+        "colorCode": "#1A1A1A",
+        "stock": 65,
+        "images": [
+          "/images/products/eyes/Pencil/soft-eye-pencil-wp.jpg",
+          "/images/products/eyes/Pencil/soft-eye-pencil-wp-2.jpg",
+          "/images/products/eyes/Pencil/soft-eye-pencil-wp-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/soft-eye-pencil-wp.jpg"
+  },
+  {
+    "id": "eyes-pencil-005",
+    "slug": "twin-eyebrow",
+    "name": "Twin Eyebrow",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Duo crayon sourcils pour un effet naturel.",
+    "price": 115,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Dark Brown",
+        "colorCode": "#3D2B1F",
+        "stock": 45,
+        "images": [
+          "/images/products/eyes/Pencil/twin-eyebrow.jpg",
+          "/images/products/eyes/Pencil/twin-eyebrow-2.jpg",
+          "/images/products/eyes/Pencil/twin-eyebrow-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/twin-eyebrow.jpg"
+  },
+  {
+    "id": "eyes-pencil-006",
+    "slug": "eyebrow-pencil",
+    "name": "Eyebrow Pencil",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Crayon sourcils précision pour un tracé parfait.",
+    "price": 95,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Taupe",
+        "colorCode": "#8B8589",
+        "stock": 55,
+        "images": [
+          "/images/products/eyes/Pencil/eyebrow-pencil.jpg",
+          "/images/products/eyes/Pencil/eyebrow-pencil-2.jpg",
+          "/images/products/eyes/Pencil/eyebrow-pencil-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/eyebrow-pencil.jpg"
+  },
+  {
+    "id": "eyes-pencil-007",
+    "slug": "eyebrow-pencil-with-brush",
+    "name": "Eyebrow Pencil with Brush",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Crayon sourcils avec brosse intégrée.",
+    "price": 105,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Coffee",
+        "colorCode": "#6F4E37",
+        "stock": 50,
+        "images": [
+          "/images/products/eyes/Pencil/eyebrow-pencil-with-brush.jpg",
+          "/images/products/eyes/Pencil/eyebrow-pencil-with-brush-2.jpg",
+          "/images/products/eyes/Pencil/eyebrow-pencil-with-brush-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/eyebrow-pencil-with-brush.jpg"
+  },
+  {
+    "id": "eyes-pencil-008",
+    "slug": "eyebrow-pen-longwear",
+    "name": "Eyebrow Pen Longwear",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Stylo sourcils longue tenue pour un effet naturel.",
+    "price": 130,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Brunette",
+        "colorCode": "#4B3621",
+        "stock": 35,
+        "images": [
+          "/images/products/eyes/Pencil/eyebrow-pen-longwear.jpeg",
+          "/images/products/eyes/Pencil/eyebrow-pen-longwear-2.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/eyebrow-pen-longwear.jpeg"
+  },
+  {
+    "id": "eyes-pencil-009",
+    "slug": "khol-eyebrow-pencil",
+    "name": "Khol Eyebrow Pencil",
+    "category": "eyes",
+    "subcategory": "pencil",
+    "description": "Crayon sourcils khôl pour un effet poudré.",
+    "price": 100,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Black Brown",
+        "colorCode": "#2C1E14",
+        "stock": 40,
+        "images": [
+          "/images/products/eyes/Pencil/khol-eyebrow-pencil.jpg",
+          "/images/products/eyes/Pencil/khol-eyebrow-pencil-2.jpg",
+          "/images/products/eyes/Pencil/khol-eyebrow-pencil-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/eyes/Pencil/khol-eyebrow-pencil.jpg"
+  },
+  {
+    "id": "face-foundation-001",
+    "slug": "foundation-spf-10",
+    "name": "Foundation SPF 10",
+    "category": "face",
+    "subcategory": "foundation",
+    "description": "Fond de teint avec protection SPF 10 pour un teint unifié et protégé.",
+    "price": 220,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Sand",
+        "colorCode": "#EDC9AF",
+        "stock": 30,
+        "images": [
+          "/images/products/face/foundation/foundation-spf-10.jpg",
+          "/images/products/face/foundation/foundation-spf-10-2.jpg",
+          "/images/products/face/foundation/foundation-spf-10-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/foundation/foundation-spf-10.jpg"
+  },
+  {
+    "id": "face-foundation-002",
+    "slug": "stick-foundation",
+    "name": "Stick Foundation",
+    "category": "face",
+    "subcategory": "foundation",
+    "description": "Fond de teint stick pour une correction ciblée et nomade.",
+    "price": 195,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Beige",
+        "colorCode": "#F5D6B8",
+        "stock": 40,
+        "images": [
+          "/images/products/face/foundation/stick-foundation.jpg",
+          "/images/products/face/foundation/stick-foundation-2.jpg",
+          "/images/products/face/foundation/stick-foundation-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/foundation/stick-foundation.jpg"
+  },
+  {
+    "id": "face-foundation-003",
+    "slug": "mattifying-lasting-foundation",
+    "name": "Mattifying Lasting Foundation",
+    "category": "face",
+    "subcategory": "foundation",
+    "description": "Fond de teint matifiant longue tenue pour un fini zéro brillance.",
+    "price": 240,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Natural",
+        "colorCode": "#FFEFD5",
+        "stock": 35,
+        "images": [
+          "/images/products/face/foundation/mattifying-lasting-foudation.jpg",
+          "/images/products/face/foundation/mattifying-lasting-foudation-2.jpg",
+          "/images/products/face/foundation/mattifying-lasting-foudation-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/foundation/mattifying-lasting-foudation.jpg"
+  },
+  {
+    "id": "face-foundation-004",
+    "slug": "primer-makeup-base",
+    "name": "Primer Make-Up Base",
+    "category": "face",
+    "subcategory": "foundation",
+    "description": "Base de maquillage lissante pour une tenue parfaite.",
+    "price": 180,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Clear",
+        "colorCode": "transparent",
+        "stock": 50,
+        "images": [
+          "/images/products/face/foundation/primer-make-up-base.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/foundation/primer-make-up-base.jpeg"
+  },
+  {
+    "id": "face-foundation-005",
+    "slug": "concealer-stick",
+    "name": "Concealer Stick",
+    "category": "face",
+    "subcategory": "foundation",
+    "description": "Anti-cernes stick pour camoufler les imperfections.",
+    "price": 135,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Light",
+        "colorCode": "#F3E1CC",
+        "stock": 45,
+        "images": [
+          "/images/products/face/foundation/concealer-stick.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/foundation/concealer-stick.jpg"
+  },
+  {
+    "id": "face-foundation-006",
+    "slug": "concealer-pencil",
+    "name": "Concealer Pencil",
+    "category": "face",
+    "subcategory": "foundation",
+    "description": "Crayon correcteur précision pour imperfections ciblées.",
+    "price": 115,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Medium",
+        "colorCode": "#E6BE8A",
+        "stock": 40,
+        "images": [
+          "/images/products/face/foundation/concealer-pencil.jpg",
+          "/images/products/face/foundation/concealer-pencil-2.jpg",
+          "/images/products/face/foundation/concealer-pencil-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/foundation/concealer-pencil.jpg"
+  },
+  {
+    "id": "face-powder-001",
+    "slug": "compact-powder",
+    "name": "Compact Powder",
+    "category": "face",
+    "subcategory": "powder",
+    "description": "Poudre compacte pour un fini velouté et mat.",
+    "price": 180,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Natural",
+        "colorCode": "#FFE4C4",
+        "stock": 50,
+        "images": [
+          "/images/products/face/powder/compact-powder.jpg",
+          "/images/products/face/powder/compact-powder-2.jpg",
+          "/images/products/face/powder/compact-powder-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/powder/compact-powder.jpg"
+  },
+  {
+    "id": "face-powder-002",
+    "slug": "loose-powder",
+    "name": "Loose Powder",
+    "category": "face",
+    "subcategory": "powder",
+    "description": "Poudre libre fixatrice pour une tenue parfaite.",
+    "price": 210,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Transparent",
+        "colorCode": "#FDF5E6",
+        "stock": 35,
+        "images": [
+          "/images/products/face/powder/loose-powder.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/powder/loose-powder.jpeg"
+  },
+  {
+    "id": "face-powder-003",
+    "slug": "bronzing-powder",
+    "name": "Bronzing Powder",
+    "category": "face",
+    "subcategory": "powder",
+    "description": "Poudre bronzante pour un teint hâlé naturel.",
+    "price": 195,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Sun Kissed",
+        "colorCode": "#D2691E",
+        "stock": 40,
+        "images": [
+          "/images/products/face/powder/bronzing-powder.jpg",
+          "/images/products/face/powder/bronzing-powder-2.jpeg",
+          "/images/products/face/powder/bronzing-powder-3.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/powder/bronzing-powder.jpg"
+  },
+  {
+    "id": "face-powder-004",
+    "slug": "highlighting-powder",
+    "name": "Highlighting Powder",
+    "category": "face",
+    "subcategory": "powder",
+    "description": "Poudre illuminatrice pour sublimer les points de lumière.",
+    "price": 220,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Golden Glow",
+        "colorCode": "#FFD700",
+        "stock": 30,
+        "images": [
+          "/images/products/face/powder/highlighting-powder.jpg",
+          "/images/products/face/powder/highlighting-powder-2.jpg",
+          "/images/products/face/powder/highlighting-powder-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/powder/highlighting-powder.jpg"
+  },
+  {
+    "id": "face-blushes-001",
+    "slug": "wet-and-dry-blush",
+    "name": "Wet & Dry Blush",
+    "category": "face",
+    "subcategory": "blushes",
+    "description": "Blush modulable wet & dry pour un teint rayonnant.",
+    "price": 170,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Coral",
+        "colorCode": "#FF7F50",
+        "stock": 45,
+        "images": [
+          "/images/products/face/blushes/wet-&-dry-blush.jpeg",
+          "/images/products/face/blushes/wet-&-dry-blush-2.jpeg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/face/blushes/wet-&-dry-blush.jpeg"
+  },
+  {
+    "id": "nails-nail-polish-001",
+    "slug": "gel-like-nail-polish",
+    "name": "Gel-Like Nail Polish",
+    "category": "nails",
+    "subcategory": "nail-polish",
+    "description": "Vernis à ongles effet gel pour une brillance professionnelle.",
+    "price": 85,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Red",
+        "colorCode": "#DC143C",
+        "stock": 60,
+        "images": [
+          "/images/products/nails/nail-polish/gel-like-nail-polish.jpg",
+          "/images/products/nails/nail-polish/gel-like-nail-polish-2.jpg",
+          "/images/products/nails/nail-polish/gel-like-nail-polish-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/nails/nail-polish/gel-like-nail-polish.jpg"
+  },
+  {
+    "id": "nails-nail-polish-002",
+    "slug": "nail-polish",
+    "name": "Nail Polish",
+    "category": "nails",
+    "subcategory": "nail-polish",
+    "description": "Vernis à ongles classique pour une couleur intense.",
+    "price": 70,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Classic Red",
+        "colorCode": "#FF0000",
+        "stock": 80,
+        "images": [
+          "/images/products/nails/nail-polish/nail-polish.jpg",
+          "/images/products/nails/nail-polish/nail-polish-2.jpg",
+          "/images/products/nails/nail-polish/nail-polish-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/nails/nail-polish/nail-polish.jpg"
+  },
+  {
+    "id": "nails-nail-polish-003",
+    "slug": "nail-polish-easy-flo",
+    "name": "Nail Polish Easy Flo",
+    "category": "nails",
+    "subcategory": "nail-polish",
+    "description": "Vernis easy flo pour une application facile et uniforme.",
+    "price": 75,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Berry",
+        "colorCode": "#B22222",
+        "stock": 70,
+        "images": [
+          "/images/products/nails/nail-polish/nail-polish-easy-flo.jpg",
+          "/images/products/nails/nail-polish/nail-polish-easy-flo-2.jpg",
+          "/images/products/nails/nail-polish/nail-polish-easy-flo-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/nails/nail-polish/nail-polish-easy-flo.jpg"
+  },
+  {
+    "id": "nails-nail-polish-004",
+    "slug": "nail-polish-laque-plus",
+    "name": "Nail Polish Laque Plus",
+    "category": "nails",
+    "subcategory": "nail-polish",
+    "description": "Vernis laque plus pour une couleur intense et durable.",
+    "price": 80,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Wine",
+        "colorCode": "#722F37",
+        "stock": 55,
+        "images": [
+          "/images/products/nails/nail-polish/nail-polish-laque-plus.jpg",
+          "/images/products/nails/nail-polish/nail-polish-laque-plus-2.jpg",
+          "/images/products/nails/nail-polish/nail-polish-laque-plus-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/nails/nail-polish/nail-polish-laque-plus.jpg"
+  },
+  {
+    "id": "nails-nail-care-001",
+    "slug": "nail-care",
+    "name": "Nail Care Treatment",
+    "category": "nails",
+    "subcategory": "nail-care",
+    "description": "Soin des ongles pour renforcer et protéger.",
+    "price": 90,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Clear",
+        "colorCode": "transparent",
+        "stock": 50,
+        "images": [
+          "/images/products/nails/nail-care/nail-care.jpg",
+          "/images/products/nails/nail-care/nail-care-2.jpg",
+          "/images/products/nails/nail-care/nail-care-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/nails/nail-care/nail-care.jpg"
+  },
+  {
+    "id": "nails-french-manicure-001",
+    "slug": "french-manicure",
+    "name": "French Manicure Set",
+    "category": "nails",
+    "subcategory": "french-manicure",
+    "description": "Kit french manicure pour un look classique et élégant.",
+    "price": 120,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Classic",
+        "colorCode": "#FFFFFF",
+        "stock": 40,
+        "images": [
+          "/images/products/nails/french-manicure/french-manicure.jpg",
+          "/images/products/nails/french-manicure/french-manicure-2.jpg",
+          "/images/products/nails/french-manicure/french-manicure-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/nails/french-manicure/french-manicure.jpg"
+  },
+  {
+    "id": "accessories-sharpeners-001",
+    "slug": "sharpeners",
+    "name": "Sharpener Duo",
+    "category": "accessories",
+    "subcategory": "sharpeners",
+    "description": "Taille-crayon double pour crayons de toutes tailles.",
+    "price": 25,
+    "variants": [
+      {
+        "id": "v1",
+        "name": "Duo",
+        "colorCode": "#C0C0C0",
+        "stock": 100,
+        "images": [
+          "/images/products/accessories/sharpeners/sharpreners.jpg",
+          "/images/products/accessories/sharpeners/sharpreners-2.jpg",
+          "/images/products/accessories/sharpeners/sharpreners-3.jpg"
+        ]
+      }
+    ],
+    "mainImage": "/images/products/accessories/sharpeners/sharpreners.jpg"
+  }
+]
