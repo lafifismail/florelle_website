@@ -65,56 +65,47 @@ export default async function AdminUsersPage({ searchParams }: AdminUsersPagePro
                     </div>
                 </div>
 
-                <div className="bg-white shadow-luxury rounded-sm overflow-hidden border border-beige/20">
+                <div className="bg-white border border-beige/20 rounded-sm shadow-sm overflow-hidden">
+
+                    {/* ✅ 1. AJOUT DU WRAPPER DE SCROLL */}
                     <div className="overflow-x-auto">
-                        <table className="min-w-[800px] w-full text-left">
-                            <thead className="bg-gray-50 border-b border-gray-100">
+
+                        {/* ✅ 2. AJOUT DE min-w-[1000px] pour empêcher l'écrasement */}
+                        <table className="w-full text-left text-sm min-w-[1000px]">
+                            <thead className="bg-off-white border-b border-beige/20 text-charcoal/60 uppercase tracking-widest text-[10px]">
                                 <tr>
-                                    <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Utilisateur</th>
-                                    <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Email</th>
-                                    <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Date d'inscription</th>
-                                    <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Rôle Actuel</th>
-                                    <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider text-right">Action</th>
+                                    <th className="p-4 font-normal">Utilisateur</th>
+                                    <th className="p-4 font-normal">Email</th>
+                                    <th className="p-4 font-normal text-center">Rôle</th>
+                                    <th className="p-4 font-normal">Date d'inscription</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100">
+                            <tbody className="divide-y divide-beige/10">
                                 {users.length === 0 ? (
                                     <tr>
-                                        <td colSpan={5} className="p-8 text-center text-gray-500 italic">
+                                        <td colSpan={4} className="p-8 text-center text-charcoal/40 italic">
                                             Aucun utilisateur trouvé.
                                         </td>
                                     </tr>
                                 ) : (
                                     users.map((user) => (
-                                        <tr key={user.id} className="hover:bg-gray-50/50 transition-colors">
-                                            <td className="p-4 md:p-6">
-                                                <div className="font-medium text-charcoal text-sm">
-                                                    {user.name || 'Sans nom'}
-                                                </div>
-                                                <div className="text-xs text-gray-400 md:hidden mt-1">{user.email}</div>
+                                        <tr key={user.id} className="hover:bg-off-white/50 transition-colors">
+                                            <td className="p-4 font-medium text-charcoal whitespace-nowrap">
+                                                {/* whitespace-nowrap empêche le nom de se casser sur 2 lignes */}
+                                                {user.name || "Sans nom"}
                                             </td>
-                                            <td className="p-4 md:p-6 text-sm text-gray-600 hidden md:table-cell">
+                                            <td className="p-4 text-charcoal/80">
                                                 {user.email}
                                             </td>
-                                            <td className="p-4 md:p-6 text-sm text-gray-500 whitespace-nowrap">
-                                                {new Date(user.createdAt).toLocaleDateString('fr-FR')}
-                                            </td>
-                                            <td className="p-4 md:p-6">
-                                                <span
-                                                    className={`
-                                                        inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold
-                                                        ${user.role === 'ADMIN' ? 'bg-purple-100 text-purple-800 border border-purple-200' : 'bg-green-100 text-green-800 border border-green-200'}
-                                                    `}
-                                                >
-                                                    {user.role}
-                                                </span>
-                                            </td>
-                                            <td className="p-4 md:p-6 text-right">
+                                            <td className="p-4 text-center">
                                                 <UserRoleToggle
                                                     userId={user.id}
                                                     currentRole={user.role as 'ADMIN' | 'USER'}
                                                     isCurrentUser={user.id === session.user.id}
                                                 />
+                                            </td>
+                                            <td className="p-4 text-charcoal/60 whitespace-nowrap">
+                                                {new Date(user.createdAt).toLocaleDateString('fr-FR')}
                                             </td>
                                         </tr>
                                     ))

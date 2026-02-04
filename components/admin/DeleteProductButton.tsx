@@ -1,39 +1,32 @@
 'use client';
 
-import { useState } from "react";
-import { Trash2 } from "lucide-react";
-import { deleteProduct } from "@/lib/actions/admin";
-import { useRouter } from "next/navigation";
+import { Trash2, Loader2 } from "lucide-react";
+import { deleteProduct } from "@/lib/actions/product";
+import { useTransition } from "react";
 
-export const DeleteProductButton = ({ id }: { id: string }) => {
-    const [loading, setLoading] = useState(false);
-    const router = useRouter();
+export default function DeleteProductButton({ id }: { id: string }) {
+    const [isPending, startTransition] = useTransition();
 
-    const handleDelete = async () => {
-        if (!confirm("Êtes-vous sûr de vouloir supprimer ce produit ?")) return;
-
-        setLoading(true);
-        try {
-            await deleteProduct(id);
-            // Router refresh is handled server-side by revalidatePath usually, 
-            // but router.refresh ensures client cache is updated if needed.
-            router.refresh();
-        } catch (error) {
-            console.error(error);
-            alert("Erreur lors de la suppression");
-        } finally {
-            setLoading(false);
+    const handleDelete = () => {
+        if (confirm("Êtes-vous sûr de vouloir supprimer ce produit ?")) {
+            startTransition(async () => {
+                await deleteProduct(id);
+            });
         }
     };
 
     return (
         <button
             onClick={handleDelete}
-            disabled={loading}
-            className="p-2 text-red-500 hover:bg-red-50 rounded transition-colors disabled:opacity-50"
-            title="Supprimer"
+            disabled={isPending}
+            className="p-2 text-red-600 bg-red-50 hover:bg-red-100 rounded-md transition-colors disabled:opacity-50"
+            title="Supprimer le produit"
         >
-            <Trash2 size={18} />
+            {isPending ? (
+                <Loader2 size={18} className="animate-spin" />
+            ) : (
+                <Trash2 size={18} />
+            )}
         </button>
     );
-};
+}

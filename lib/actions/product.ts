@@ -101,3 +101,33 @@ export async function upsertProduct(data: {
         throw new Error("Erreur lors de l'enregistrement");
     }
 }
+
+export async function deleteProduct(id: string) {
+    const session = await getServerSession(authOptions);
+
+    if (!session?.user?.email) {
+        throw new Error("Non autorisé");
+    }
+
+    const user = await prisma.user.findUnique({
+        where: { email: session.user.email },
+        select: { role: true }
+    });
+
+    if (user?.role !== 'ADMIN') {
+        throw new Error("Accès refusé");
+    }
+
+    try {
+        await prisma.product.delete({
+            where: { id }
+        });
+
+        revalidatePath('/admin/products');
+        revalidatePath('/', 'layout');
+        return { success: true };
+    } catch (error) {
+        console.error("Delete Product Error:", error);
+        throw new Error("Erreur lors de la suppression");
+    }
+}

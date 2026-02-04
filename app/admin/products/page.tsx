@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import Image from "next/image";
 import { Plus, Pencil, X } from "lucide-react";
-import { DeleteProductButton } from "@/components/admin/DeleteProductButton";
+import DeleteProductButton from "@/components/admin/DeleteProductButton";
 import { SearchInput } from "@/components/admin/SearchInput";
 import { Pagination } from "@/components/admin/Pagination";
 import { Navbar } from '@/components/layout/Navbar';
@@ -111,7 +111,7 @@ export default async function AdminProductsPage({ searchParams }: AdminProductsP
                             </p>
                         </div>
                         <div className="flex items-center gap-4">
-                            <SearchInput placeholder="Rechercher un produit..." />
+                            <SearchInput placeholder="Rechercher un produit..." defaultValue={query} />
                             <CategoryFilter />
                             <Link href="/admin/products/new" className="bg-charcoal text-white px-6 py-2.5 text-xs uppercase tracking-widest hover:bg-gold transition-colors flex items-center gap-2 rounded-sm shadow-md whitespace-nowrap h-[42px]">
                                 <Plus size={16} />
@@ -122,7 +122,7 @@ export default async function AdminProductsPage({ searchParams }: AdminProductsP
 
                     <div className="bg-white border border-beige/20 rounded-sm shadow-sm overflow-hidden flex flex-col">
                         <div className="overflow-x-auto">
-                            <table className="min-w-[800px] w-full text-left">
+                            <table className="min-w-[1000px] w-full text-left text-sm">
                                 <thead className="bg-charcoal text-white uppercase text-[10px] tracking-widest">
                                     <tr>
                                         <th className="px-6 py-4 font-medium">Image</th>
@@ -142,7 +142,7 @@ export default async function AdminProductsPage({ searchParams }: AdminProductsP
                                         </tr>
                                     ) : (
                                         products.map((product) => (
-                                            <tr key={product.id} className="hover:bg-off-white/50 transition-colors group">
+                                            <tr key={product.id} className="group hover:bg-off-white/50 transition-colors">
                                                 <td className="px-6 py-4">
                                                     <div className="relative w-12 h-12 bg-white border border-beige/20 rounded overflow-hidden">
                                                         <Image
@@ -189,7 +189,7 @@ export default async function AdminProductsPage({ searchParams }: AdminProductsP
                                                     )}
                                                 </td>
                                                 <td className="px-6 py-4 text-right">
-                                                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                    <div className="flex items-center justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-200">
                                                         <Link
                                                             href={`/admin/products/${product.id}`}
                                                             className="p-2 text-charcoal hover:bg-gold/10 hover:text-gold-dark rounded transition-colors"

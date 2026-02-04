@@ -4,7 +4,7 @@ import { Search } from 'lucide-react';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 import { useDebouncedCallback } from 'use-debounce';
 
-export function SearchInput({ placeholder }: { placeholder: string }) {
+export function SearchInput({ placeholder, defaultValue }: { placeholder: string, defaultValue?: string }) {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const { replace } = useRouter();
@@ -34,7 +34,7 @@ export function SearchInput({ placeholder }: { placeholder: string }) {
                 placeholder={placeholder}
                 style={{ color: 'black', opacity: 1 }}
                 onChange={(e) => handleSearch(e.target.value)}
-                defaultValue={searchParams.get('query')?.toString()}
+                defaultValue={defaultValue}
             />
             <Search className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-gold transition-colors z-20 pointer-events-none" />
         </div>
