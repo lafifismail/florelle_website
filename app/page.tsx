@@ -3,12 +3,14 @@ import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/home/Hero';
 import { TrustBadges } from '@/components/home/TrustBadges';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
-import { ProductCard } from '@/components/ui/ProductCard';
-import { getAllProducts } from '@/lib/products';
+import { DBProductCard } from '@/components/ui/DBProductCard';
+import { getFeaturedProducts } from '@/lib/actions';
 import Link from 'next/link';
 
-export default function Home() {
-    const products = getAllProducts().slice(0, 4);
+export default async function Home() {
+    // Fetch featured products from database
+    const products = await getFeaturedProducts();
+    const displayProducts = products.slice(0, 4); // Display first 4 featured products
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -53,11 +55,17 @@ export default function Home() {
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-12 max-w-7xl mx-auto">
-                        {products.map((p) => (
-                            <ProductCard key={p.id} product={p} />
-                        ))}
-                    </div>
+                    {displayProducts.length > 0 ? (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-12 max-w-7xl mx-auto">
+                            {displayProducts.map((product) => (
+                                <DBProductCard key={product.id} product={product} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="text-center py-12">
+                            <p className="text-charcoal/50 font-serif text-xl">Aucun produit disponible pour le moment</p>
+                        </div>
+                    )}
                 </section>
             </main>
             <Footer />
@@ -65,3 +73,4 @@ export default function Home() {
         </div>
     );
 }
+

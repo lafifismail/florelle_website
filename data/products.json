@@ -5,7 +5,7 @@
     "name": "Matte Liquid Lipstick",
     "category": "lips",
     "subcategory": "lipstick",
-    "description": "Rouge à lèvres liquide mat longue tenue. Fini velouté intense inspiré de l'élégance italienne.",
+    "description": "Rouge à lèvres liquide au rendu couleur extraordinairement riche et au fini mat. Sa texture crémeuse est extrêmement confortable, facile à appliquer et sèche rapidement sans dessécher les lèvres grâce à l'huile d'avocat et à la vitamine E. Formule 100% Vegan.",
     "price": 190,
     "variants": [
       {
@@ -28,7 +28,7 @@
     "name": "Lipstick Rosso Le Chic",
     "category": "lips",
     "subcategory": "lipstick",
-    "description": "L'élégance à l'italienne. Rouge classique hautement pigmenté pour un look sophistiqué.",
+    "description": "Un rouge à lèvres ultra-crémeux et hydratant. Sa texture lisse garantit une couvrance parfaite et un confort absolu grâce à des agents émollients qui assurent une sensation agréable sur la peau.",
     "price": 210,
     "variants": [
       {
@@ -51,7 +51,7 @@
     "name": "Velvet Lipstick",
     "category": "lips",
     "subcategory": "lipstick",
-    "description": "Fini velours soyeux pour des lèvres douces et confortables. Texture crémeuse exceptionnelle.",
+    "description": "Dessinez, définissez et colorez vos lèvres avec le Velvet Lipstick. Très facile à appliquer, il laisse les lèvres douces longtemps grâce à son action hydratante.",
     "price": 180,
     "variants": [
       {
@@ -74,7 +74,7 @@
     "name": "Lipstick Rouge",
     "category": "lips",
     "subcategory": "lipstick",
-    "description": "Rouge classique intensément pigmenté. La quintessence du rouge parfait.",
+    "description": "Le rouge à lèvres classique intemporel. Une texture onctueuse qui offre une couleur intense et une tenue confortable tout au long de la journée.",
     "price": 160,
     "variants": [
       {
@@ -97,7 +97,7 @@
     "name": "Gloss Long Tenue Mat",
     "category": "lips",
     "subcategory": "gloss",
-    "description": "Gloss mat longue tenue pour des lèvres veloutées et confortables.",
+    "description": "Un gloss innovant qui allie la brillance d'un gloss à la tenue d'une encre. Fini mat velouté, non collant, pour des lèvres sublimées durablement.",
     "price": 150,
     "variants": [
       {
@@ -120,7 +120,7 @@
     "name": "Lip Pencil Le Chic",
     "category": "lips",
     "subcategory": "lip-pencil",
-    "description": "Crayon contour des lèvres pour un tracé précis et élégant.",
+    "description": "Un crayon extra doux qui s'applique facilement et en douceur. Grâce à sa forte pigmentation, cette formule longue tenue offre une couleur riche et une excellente couverture.",
     "price": 95,
     "variants": [
       {
@@ -142,7 +142,7 @@
     "name": "Waterproof Lip Pencil",
     "category": "lips",
     "subcategory": "lip-pencil",
-    "description": "Crayon lèvres waterproof résistant à l'eau et longue tenue.",
+    "description": "Crayon à lèvres waterproof qui glisse doucement sur vos lèvres. Il offre une couleur excellente et uniforme avec un résultat longue durée résistant à l'eau.",
     "price": 110,
     "variants": [
       {
@@ -163,7 +163,7 @@
     "name": "Full Lash Mascara",
     "category": "eyes",
     "subcategory": "mascara",
-    "description": "Mascara volume maximal pour des cils pleins et fournis.",
+    "description": "Un seul passage de ce mascara fantastique donne un volume instantané ! Idéal pour un noir profond et un volume dramatique, même sur les cils les plus courts. Vegan friendly.",
     "price": 145,
     "variants": [
       {
@@ -184,7 +184,7 @@
     "name": "High Volume Mascara",
     "category": "eyes",
     "subcategory": "mascara",
-    "description": "Mascara haute performance pour des cils démultipliés et intenses.",
+    "description": "Exagérez vos cils avec du volume. La formule crée un volume longue durée et une couleur intense sans écailles, paquets ou bavures.",
     "price": 150,
     "variants": [
       {
@@ -207,7 +207,7 @@
     "name": "Super Lash Mascara",
     "category": "eyes",
     "subcategory": "mascara",
-    "description": "Mascara longueur infinie pour un regard spectaculaire.",
+    "description": "Sa brosse extrême attrape chaque cil. Formulé pour allonger les cils tout en respectant les yeux sensibles. Pas de bavures, pas de paquets.",
     "price": 140,
     "variants": [
       {
@@ -230,7 +230,7 @@
     "name": "Mascara Super Lash Waterproof",
     "category": "eyes",
     "subcategory": "mascara",
-    "description": "Mascara waterproof tenue 24h pour un regard intense toute la journée.",
+    "description": "Laisse les cils recourbés et magnifiquement longs dans une teinte ultra noire. Formule waterproof innovante qui garde les cils sains toute la journée.",
     "price": 155,
     "variants": [
       {
@@ -253,7 +253,7 @@
     "name": "Lash & Brow Mascara Gel",
     "category": "eyes",
     "subcategory": "mascara",
-    "description": "Gel fixateur transparent pour cils et sourcils naturels.",
+    "description": "Le Gel Mascara Lash & Brow chouchoute vos sourcils et vos cils pour les mettre en forme parfaitement.",
     "price": 120,
     "variants": [
       {
@@ -276,7 +276,7 @@
     "name": "Ultra Black Eyeliner & Khol Waterproof",
     "category": "eyes",
     "subcategory": "eyeliners",
-    "description": "Eyeliner 2-en-1 ultra noir waterproof pour un regard intense.",
+    "description": "Nouvelle formule extrêmement douce et crémeuse. Excellente couvrance noir intense. Tenue 14 heures. Convient pour une utilisation sur la muqueuse interne.",
     "price": 135,
     "variants": [
       {
@@ -299,7 +299,7 @@
     "name": "Felt Tip Liner",
     "category": "eyes",
     "subcategory": "eyeliners",
-    "description": "Eyeliner feutre pour une application facile et précise.",
+    "description": "Eyeliner feutre doux, haute couvrance. La pointe fine et flexible permet un tracé délicat et étoffe le regard par application entre les cils.",
     "price": 120,
     "variants": [
       {
@@ -322,7 +322,7 @@
     "name": "Eyeliner WP",
     "category": "eyes",
     "subcategory": "eyeliners",
-    "description": "Eyeliner waterproof résistant pour une tenue parfaite.",
+    "description": "Un pinceau pointu doux et fin facile à utiliser pour un résultat précis. L'encre waterproof sèche vite et crée un film flexible super longue tenue au fini brillant.",
     "price": 115,
     "variants": [
       {
@@ -345,7 +345,7 @@
     "name": "Felt Tip Matte Waterproof",
     "category": "eyes",
     "subcategory": "eyeliners",
-    "description": "Eyeliner feutre mat waterproof pour un look sophistiqué.",
+    "description": "Eyeliner feutre mat à séchage rapide qui délivre une couleur pleine jusqu'à 24 heures. Formule résistante à l'humidité.",
     "price": 130,
     "variants": [
       {
@@ -368,7 +368,7 @@
     "name": "Smokey Eyes Palette",
     "category": "eyes",
     "subcategory": "eyeshadows",
-    "description": "Palette smokey eyes pour un regard intense et mystérieux.",
+    "description": "Une palette dynamique où les couleurs peuvent être mélangées pour créer des effets chromatiques infinis. Trait lisse, uniforme et très lumineux.",
     "price": 250,
     "variants": [
       {
@@ -390,7 +390,7 @@
     "name": "Wet & Dry Eyeshadow",
     "category": "eyes",
     "subcategory": "eyeshadows",
-    "description": "Fard à paupières modulable wet & dry pour un effet sur mesure.",
+    "description": "Poudre ultra-nacrée douce, adhérence parfaite. Utilisez le pinceau sec pour un maquillage naturel, ou mouillé pour un look dramatique et une tenue renforcée.",
     "price": 145,
     "variants": [
       {
@@ -413,7 +413,7 @@
     "name": "Eyebrow Kit",
     "category": "eyes",
     "subcategory": "eyeshadows",
-    "description": "Kit complet pour sourcils parfaits avec poudres et accessoires.",
+    "description": "Un superbe kit avec deux poudres colorées pour sourcils. Utilisez la teinte la plus claire pour illuminer sous l'arcade sourcilière.",
     "price": 190,
     "variants": [
       {
@@ -436,7 +436,7 @@
     "name": "Waterliner Kajal Pencil",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Crayon kajal waterproof pour un regard profond.",
+    "description": "Couleur douce idéale pour la muqueuse (waterline). Parfait pour des looks Kajal colorés. Formule glissante facile, couleurs intenses avec un fini brillant.",
     "price": 90,
     "variants": [
       {
@@ -459,7 +459,7 @@
     "name": "Crayon Khol Waterproof",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Crayon khôl waterproof résistant à l'humidité.",
+    "description": "Application douce et glissante. Crée des effets spéciaux du perlé aux lignes métalliques ou scintillantes. Tenue 8 heures.",
     "price": 105,
     "variants": [
       {
@@ -482,7 +482,7 @@
     "name": "Khol Pencil WP",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Khôl pencil waterproof classique.",
+    "description": "Le crayon idéal pour chaque application. Une large gamme de textures : longue tenue, poudré, perlé, métallique ou mat. Excellente compatibilité cutanée.",
     "price": 100,
     "variants": [
       {
@@ -505,7 +505,7 @@
     "name": "Soft Eye Pencil WP",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Crayon yeux doux waterproof pour une application confortable.",
+    "description": "La douceur est son point fort. Fini haute brillance et tenue de plus de 8 heures. Waterproof.",
     "price": 95,
     "variants": [
       {
@@ -528,7 +528,7 @@
     "name": "Twin Eyebrow",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Duo crayon sourcils pour un effet naturel.",
+    "description": "Un crayon sourcils à double embout. La pointe fine définit les sourcils, tandis que la pointe épaisse lifte l'arche et illumine le regard.",
     "price": 115,
     "variants": [
       {
@@ -551,7 +551,7 @@
     "name": "Eyebrow Pencil",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Crayon sourcils précision pour un tracé parfait.",
+    "description": "Un rendu couleur merveilleux pour l'application sur les sourcils. Tracé précis sur peau sèche ou humide. Allonge et sculpte les sourcils.",
     "price": 95,
     "variants": [
       {
@@ -574,7 +574,7 @@
     "name": "Eyebrow Pencil with Brush",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Crayon sourcils avec brosse intégrée.",
+    "description": "Crayon sourcils conçu pour correspondre à la couleur naturelle des poils. La formule assure adhérence, précision et longue tenue. Inclut une brosse pour coiffer et définir la ligne.",
     "price": 105,
     "variants": [
       {
@@ -597,7 +597,7 @@
     "name": "Eyebrow Pen Longwear",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Stylo sourcils longue tenue pour un effet naturel.",
+    "description": "Feutre à sourcils longue tenue pour une définition ultra-précise effet poil à poil. Résultat naturel et durable.",
     "price": 130,
     "variants": [
       {
@@ -619,7 +619,7 @@
     "name": "Khol Eyebrow Pencil",
     "category": "eyes",
     "subcategory": "pencil",
-    "description": "Crayon sourcils khôl pour un effet poudré.",
+    "description": "Le magnifique outil 2-en-1 : à la fois Khôl et Crayon sourcils. Riche et lisse, décorez vos sourcils et vos yeux selon vos envies.",
     "price": 100,
     "variants": [
       {
@@ -642,7 +642,7 @@
     "name": "Foundation SPF 10",
     "category": "face",
     "subcategory": "foundation",
-    "description": "Fond de teint avec protection SPF 10 pour un teint unifié et protégé.",
+    "description": "Ce fond de teint SPF 10 dissimule toutes les imperfections avec un résultat naturel. Le teint paraît lisse et satiné. Enrichi en principes actifs apaisants et anti-rides.",
     "price": 220,
     "variants": [
       {
@@ -665,7 +665,7 @@
     "name": "Stick Foundation",
     "category": "face",
     "subcategory": "foundation",
-    "description": "Fond de teint stick pour une correction ciblée et nomade.",
+    "description": "Le Fond de Teint Stick Florelle offre une tenue impeccable et un confort toute la journée. La Vitamine E et le filtre UVB apportent confort et protection.",
     "price": 195,
     "variants": [
       {
@@ -688,7 +688,7 @@
     "name": "Mattifying Lasting Foundation",
     "category": "face",
     "subcategory": "foundation",
-    "description": "Fond de teint matifiant longue tenue pour un fini zéro brillance.",
+    "description": "Fond de teint fini mat naturel longue tenue. La formule cache les imperfections tout en améliorant la peau et en la protégeant avec un SPF15.",
     "price": 240,
     "variants": [
       {
@@ -711,7 +711,7 @@
     "name": "Primer Make-Up Base",
     "category": "face",
     "subcategory": "foundation",
-    "description": "Base de maquillage lissante pour une tenue parfaite.",
+    "description": "Une base de maquillage extraordinaire créée pour raffermir la peau et lui donner un aspect jeune et sain.",
     "price": 180,
     "variants": [
       {
@@ -732,7 +732,7 @@
     "name": "Concealer Stick",
     "category": "face",
     "subcategory": "foundation",
-    "description": "Anti-cernes stick pour camoufler les imperfections.",
+    "description": "Stick correcteur mat haute couvrance pour camoufler naturellement les petits défauts, taches, cernes et imperfections.",
     "price": 135,
     "variants": [
       {
@@ -776,7 +776,7 @@
     "name": "Compact Powder",
     "category": "face",
     "subcategory": "powder",
-    "description": "Poudre compacte pour un fini velouté et mat.",
+    "description": "Poudre légère et impalpable, ne dessèche pas la peau, ne cartonne pas, tenue parfaite. Donne un aspect velouté naturel au teint. À base de substances naturelles.",
     "price": 180,
     "variants": [
       {
@@ -799,7 +799,7 @@
     "name": "Loose Powder",
     "category": "face",
     "subcategory": "powder",
-    "description": "Poudre libre fixatrice pour une tenue parfaite.",
+    "description": "Poudre libre aérienne pour fixer le maquillage sans alourdir. Matifie le teint et assure une tenue longue durée avec un fini transparent et soyeux.",
     "price": 210,
     "variants": [
       {
@@ -820,7 +820,7 @@
     "name": "Bronzing Powder",
     "category": "face",
     "subcategory": "powder",
-    "description": "Poudre bronzante pour un teint hâlé naturel.",
+    "description": "Cette poudre bronzante douce et soyeuse est idéale pour rehausser une peau saine, éclatante et bronzée.",
     "price": 195,
     "variants": [
       {
@@ -843,7 +843,7 @@
     "name": "Highlighting Powder",
     "category": "face",
     "subcategory": "powder",
-    "description": "Poudre illuminatrice pour sublimer les points de lumière.",
+    "description": "Une poudre illuminatrice soyeuse et crémeuse qui fond sur la peau pour une luminosité supplémentaire.",
     "price": 220,
     "variants": [
       {
@@ -866,7 +866,7 @@
     "name": "Wet & Dry Blush",
     "category": "face",
     "subcategory": "blushes",
-    "description": "Blush modulable wet & dry pour un teint rayonnant.",
+    "description": "Une formule nouvelle qui multiplie la couleur et la légèreté. Poudre douce ultra-nacrée. Utilisation à sec pour un effet naturel, ou mouillé pour une couleur plus intense.",
     "price": 170,
     "variants": [
       {
@@ -888,7 +888,7 @@
     "name": "Gel-Like Nail Polish",
     "category": "nails",
     "subcategory": "nail-polish",
-    "description": "Vernis à ongles effet gel pour une brillance professionnelle.",
+    "description": "Obtenez un look effet gel sans lampe UV. Pinceau large pour une application lisse et uniforme.",
     "price": 85,
     "variants": [
       {
@@ -911,7 +911,7 @@
     "name": "Nail Polish",
     "category": "nails",
     "subcategory": "nail-polish",
-    "description": "Vernis à ongles classique pour une couleur intense.",
+    "description": "Texture fluide et crémeuse, facile à appliquer. Les poils souples du pinceau permettent une couche lisse et uniforme. Les teintes sont assorties à la plupart des rouges à lèvres.",
     "price": 70,
     "variants": [
       {
@@ -934,7 +934,7 @@
     "name": "Nail Polish Easy Flo",
     "category": "nails",
     "subcategory": "nail-polish",
-    "description": "Vernis easy flo pour une application facile et uniforme.",
+    "description": "Quelle couleur correspond à votre style ? Une collection tendance, du nude ludique au bronze profond. Easy Flò a la réponse avec son pinceau large.",
     "price": 75,
     "variants": [
       {
@@ -957,7 +957,7 @@
     "name": "Nail Polish Laque Plus",
     "category": "nails",
     "subcategory": "nail-polish",
-    "description": "Vernis laque plus pour une couleur intense et durable.",
+    "description": "Illuminez vos ongles ! Le vernis LAQUE PLUS est rapide et facile à appliquer. Longue tenue et brillance, il sèche vite.",
     "price": 80,
     "variants": [
       {
@@ -980,7 +980,7 @@
     "name": "Nail Care Treatment",
     "category": "nails",
     "subcategory": "nail-care",
-    "description": "Soin des ongles pour renforcer et protéger.",
+    "description": "Gamme complète de soins : Top Coat brillant anti-jaunissement, Base pour French, Durcisseur aux algues rouges, Base pour ongles cassants, Vernis amer anti-rongement, Base lissante et Durcisseur au Calcium.",
     "price": 90,
     "variants": [
       {
@@ -1003,7 +1003,7 @@
     "name": "French Manicure Set",
     "category": "nails",
     "subcategory": "french-manicure",
-    "description": "Kit french manicure pour un look classique et élégant.",
+    "description": "Faites votre propre manucure à la maison et ayez toujours des mains impeccables. Le kit contient tout le nécessaire pour une French Manicure parfaite.",
     "price": 120,
     "variants": [
       {
@@ -1026,7 +1026,7 @@
     "name": "Sharpener Duo",
     "category": "accessories",
     "subcategory": "sharpeners",
-    "description": "Taille-crayon double pour crayons de toutes tailles.",
+    "description": "Taille-crayons double pour crayons fins et format jumbo. Obtenez une utilisation maximale et précise de vos crayons préférés.",
     "price": 25,
     "variants": [
       {

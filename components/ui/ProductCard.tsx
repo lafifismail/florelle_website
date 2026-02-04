@@ -10,7 +10,7 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
     return (
         <Link
-            href={`/shop/${product.category.toLowerCase()}/${product.subcategory.toLowerCase()}/${product.slug}`}
+            href={`/products/${product.slug}`}
             className="group block"
         >
             <div className="relative aspect-[3/4] overflow-hidden bg-white mb-4 transition-luxury flex items-center justify-center">

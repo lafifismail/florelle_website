@@ -1,6 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import { UserNav } from '@/components/layout/UserNav';
 import { getShopStructure } from '@/lib/products';
+import { CartButton } from '@/components/ui/CartButton';
+import { User } from 'lucide-react';
 
 export const Navbar = () => {
     const structure = getShopStructure();
@@ -32,10 +35,8 @@ export const Navbar = () => {
             <div className="flex items-center gap-4">
                 {/* Simple icons placeholders */}
                 <button className="p-2"><SearchIcon /></button>
-                <button className="p-2 relative">
-                    <CartIcon />
-                    <span className="absolute top-0 right-0 bg-gold text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center">0</span>
-                </button>
+                <UserNav />
+                <CartButton />
             </div>
         </nav>
     );
