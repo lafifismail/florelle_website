@@ -18,7 +18,7 @@ export default async function AdminLayout({
     return (
         <div className="flex min-h-screen bg-off-white">
             {/* Sidebar */}
-            <aside className="w-64 bg-charcoal text-white hidden md:flex flex-col fixed h-full z-50 shadow-2xl">
+            <aside className="w-64 bg-charcoal text-white hidden lg:flex flex-col fixed h-full z-50 shadow-2xl">
                 <div className="p-8 border-b border-white/10">
                     <h1 className="font-serif text-2xl tracking-widest text-white">FLORELLE</h1>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-gold block mt-2 opacity-80">Admin Panel</span>
@@ -52,7 +52,7 @@ export default async function AdminLayout({
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 md:ml-64 p-8 md:p-12 overflow-y-auto">
+            <main className="flex-1 lg:ml-64 p-8 md:p-12 overflow-y-auto">
                 {children}
             </main>
         </div>

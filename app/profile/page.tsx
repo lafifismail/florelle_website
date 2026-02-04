@@ -97,32 +97,49 @@ export default async function ProfilePage() {
                                         </Link>
                                     </div>
                                 ) : (
-                                    <div className="space-y-4">
-                                        {user.orders.map((order: any) => (
-                                            <div key={order.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-4 border border-beige/10 rounded hover:border-gold/30 transition-colors group">
-                                                <div className="space-y-1 mb-2 sm:mb-0">
-                                                    <div className="flex items-center gap-2">
-                                                        <span className="font-mono text-xs font-bold text-charcoal/40">#{order.id.slice(-6).toUpperCase()}</span>
-                                                        <span className={`text-[10px] px-2 py-0.5 rounded border ${getStatusStyles(String(order.status))}`}>
-                                                            {getStatusLabel(String(order.status))}
-                                                        </span>
-                                                    </div>
-                                                    <p className="text-xs text-charcoal/60">
-                                                        {new Date(order.createdAt).toLocaleDateString('fr-MA', {
-                                                            day: 'numeric', month: 'long', year: 'numeric'
-                                                        })}
-                                                    </p>
-                                                </div>
-                                                <div className="flex items-center justify-between sm:justify-end gap-4">
-                                                    <p className="font-serif font-bold text-charcoal">
-                                                        {order.totalAmount.toFixed(0)} MAD
-                                                    </p>
-                                                    <Button variant="outline" className="text-xs py-2 h-auto hidden group-hover:flex">
-                                                        Détails
-                                                    </Button>
-                                                </div>
-                                            </div>
-                                        ))}
+                                    <div className="bg-white border border-beige/20 rounded-sm shadow-sm overflow-hidden">
+                                        <div className="overflow-x-auto">
+                                            <table className="w-full text-left min-w-[600px]">
+                                                <thead className="bg-off-white border-b border-beige/20 text-charcoal/60 uppercase tracking-widest text-[10px]">
+                                                    <tr>
+                                                        <th className="p-4 font-normal">N° Commande</th>
+                                                        <th className="p-4 font-normal">Date</th>
+                                                        <th className="p-4 font-normal">Statut</th>
+                                                        <th className="p-4 font-normal text-right">Montant</th>
+                                                        <th className="p-4 font-normal text-right">Détails</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="divide-y divide-beige/10">
+                                                    {user.orders.map((order: any) => (
+                                                        <tr key={order.id} className="hover:bg-off-white/50 transition-colors">
+                                                            <td className="p-4 font-mono text-xs font-bold text-charcoal/40">
+                                                                #{order.id.slice(-6).toUpperCase()}
+                                                            </td>
+                                                            <td className="p-4 text-sm text-charcoal/80">
+                                                                {new Date(order.createdAt).toLocaleDateString('fr-MA', {
+                                                                    day: 'numeric', month: 'short', year: 'numeric'
+                                                                })}
+                                                            </td>
+                                                            <td className="p-4">
+                                                                <span className={`text-[10px] px-2 py-0.5 rounded border ${getStatusStyles(String(order.status))}`}>
+                                                                    {getStatusLabel(String(order.status))}
+                                                                </span>
+                                                            </td>
+                                                            <td className="p-4 text-right font-serif font-bold text-charcoal">
+                                                                {order.totalAmount.toFixed(0)} MAD
+                                                            </td>
+                                                            <td className="p-4 text-right">
+                                                                <Link href={`/profile/orders/${order.id}`}>
+                                                                    <Button variant="outline" className="text-xs py-1 px-3 h-auto">
+                                                                        Voir
+                                                                    </Button>
+                                                                </Link>
+                                                            </td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 )}
                             </div>

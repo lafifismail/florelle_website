@@ -23,7 +23,7 @@ export const Hero = () => {
     }, []);
 
     return (
-        <section className="relative h-screen w-full flex items-center justify-center overflow-hidden pt-16">
+        <section className="relative h-[75vh] md:h-screen w-full flex items-center justify-center overflow-hidden pt-16">
             {/* Image Slider with Fade Transition */}
             <div className="absolute inset-0 z-0">
                 {HERO_IMAGES.map((image, index) => (
@@ -37,7 +37,7 @@ export const Hero = () => {
                             alt={`Florelle Beauty Hero ${index + 1}`}
                             fill
                             priority={index === 0}
-                            className="object-cover"
+                            className="object-cover object-top"
                             sizes="100vw"
                         />
                         {/* Dark overlay for text readability */}
@@ -63,7 +63,7 @@ export const Hero = () => {
                     Découvrez une fusion unique entre le luxe italien et la culture beauté du Moyen-Orient. Pour celles qui osent rayonner.
                 </p>
 
-                <div className="flex flex-col md:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700">
+                <div className="flex flex-col items-center md:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-700">
                     <Link href="/shop/eyes">
                         <Button variant="primary" className="min-w-[200px]">Explorer le Regard</Button>
                     </Link>

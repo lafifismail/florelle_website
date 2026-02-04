@@ -47,38 +47,49 @@ export default async function CategoryPage({
     // Fetch products from database
     const products = await prisma.product.findMany({
         where: whereClause,
-        include: { category: true },
+        include: {
+            category: true,
+            reviews: {
+                where: { isApproved: true },
+                select: { rating: true }
+            }
+        },
         orderBy: { createdAt: 'desc' },
     });
 
     // Get available subcategories for this category
     const subcategories = subcategoryOptions[category.toLowerCase()] || [];
 
-    // Determine banner image path with priority: subcategory > category fallback
-    const getBannerPath = () => {
+    // Determine banner configuration
+    const getBannerConfig = () => {
         const cat = category.toLowerCase();
         const basePath = `/images/banners/${cat}`;
 
-        // Priority 1: Subcategory banner if type filter is active
-        // Format: /images/banners/nails/nails-french-manicure.jpg
+        // Case 1: Specific Subcategory Selected -> Single Image
         if (type) {
-            // Clean type to match filenames (ex: 'Lip Pencil' -> 'lip-pencil')
             let typeSlug = type.toLowerCase().replace(/\s+/g, '-');
-
-            // Special case: 'Eyeliners' -> 'eyeliner' (file is singular)
-            if (type === 'Eyeliners') {
-                typeSlug = 'eyeliner';
-            }
-
-            return `${basePath}/${cat}-${typeSlug}.jpg`;
+            if (type === 'Eyeliners') typeSlug = 'eyeliner';
+            return {
+                path: `${basePath}/${cat}-${typeSlug}.jpg`,
+                images: []
+            };
         }
 
-        // Priority 2: Category default banner (if exists)
-        // Format: /images/banners/nails/nails.jpg
-        return `${basePath}/${cat}.jpg`;
+        // Case 2: "Tout Voir" -> Slideshow of all subcategories
+        // We generate a list of all potential subcategory images
+        const slideshowImages = subcategories.map(sub => {
+            let subSlug = sub.toLowerCase().replace(/\s+/g, '-');
+            if (sub === 'Eyeliners') subSlug = 'eyeliner';
+            return `${basePath}/${cat}-${subSlug}.jpg`;
+        });
+
+        return {
+            path: `${basePath}/${cat}.jpg`, // Fallback
+            images: slideshowImages
+        };
     };
 
-    const bannerPath = getBannerPath();
+    const { path: bannerPath, images: bannerImages } = getBannerConfig();
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -86,8 +97,9 @@ export default async function CategoryPage({
             <main className="pt-24 pb-24 flex-grow">
                 {/* Category Banner */}
                 <CategoryBanner
-                    key={bannerPath}
+                    key={type || 'all'} // Reset animation when switching modes
                     bannerPath={bannerPath}
+                    bannerImages={type ? undefined : bannerImages}
                     title={type || categorySlug}
                 />
 
@@ -138,9 +150,10 @@ export default async function CategoryPage({
 
                     {/* Products Grid */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-12">
-                        {products.map((p) => (
-                            <DBProductCard key={p.id} product={p} />
-                        ))}
+                        {products.map((item) => {
+                            const p = item as any;
+                            return <DBProductCard key={p.id} product={p} />;
+                        })}
                     </div>
 
                     {products.length === 0 && (

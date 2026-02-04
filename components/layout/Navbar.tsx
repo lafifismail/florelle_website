@@ -1,23 +1,57 @@
 import React from 'react';
 import Link from 'next/link';
 import { UserNav } from '@/components/layout/UserNav';
+import { SearchBar } from '@/components/layout/SearchBar';
 import { getShopStructure } from '@/lib/products';
 import { CartButton } from '@/components/ui/CartButton';
-import { User } from 'lucide-react';
+import { User, Instagram } from 'lucide-react';
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { MobileMenu } from '@/components/layout/MobileMenu';
 
-export const Navbar = () => {
+export const Navbar = async () => {
     const structure = getShopStructure();
     const categories = Object.keys(structure);
+    const session = await getServerSession(authOptions);
+    const isAdmin = session?.user?.role === 'ADMIN';
+
+    // ...
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-beige/20 h-16 flex items-center px-4 md:px-12 justify-between">
-            <Link href="/" className="block">
-                <img
-                    src="/logo.png"
-                    alt="Florelle Maroc"
-                    className="h-10 w-auto object-contain"
-                />
-            </Link>
+            <div className="flex items-center gap-4 md:gap-8">
+                <MobileMenu isAdmin={isAdmin} />
+                <Link href="/" className="block">
+                    <img
+                        src="/logo.png"
+                        alt="Florelle Maroc"
+                        className="h-8 md:h-10 w-auto object-contain"
+                    />
+                </Link>
+
+                {isAdmin && (
+                    <div className="hidden md:flex gap-2">
+                        <Link
+                            href="/admin/dashboard"
+                            className="text-xs font-bold text-charcoal border border-charcoal/20 px-3 py-1 rounded-sm hover:bg-charcoal hover:text-white transition-colors"
+                        >
+                            DASHBOARD
+                        </Link>
+                        <Link
+                            href="/admin/users"
+                            className="text-xs font-bold text-active-gold border border-active-gold px-3 py-1 rounded-sm hover:bg-active-gold hover:text-white transition-colors"
+                        >
+                            USERS
+                        </Link>
+                        <Link
+                            href="/admin/orders"
+                            className="text-xs font-bold text-charcoal border border-charcoal/20 px-3 py-1 rounded-sm hover:bg-charcoal hover:text-white transition-colors"
+                        >
+                            COMMANDES
+                        </Link>
+                    </div>
+                )}
+            </div>
 
             <div className="hidden md:flex gap-8 items-center h-full">
                 {categories.map((cat) => (
@@ -33,8 +67,26 @@ export const Navbar = () => {
             </div>
 
             <div className="flex items-center gap-4">
-                {/* Simple icons placeholders */}
-                <button className="p-2"><SearchIcon /></button>
+                <div className="hidden md:flex items-center gap-4 mr-2 border-r border-beige/20 pr-6">
+                    <Link
+                        href="https://www.tiktok.com/@florelle.maroc"
+                        target="_blank"
+                        className="text-charcoal hover:text-gold hover:scale-110 transition-all duration-300"
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                        </svg>
+                    </Link>
+                    <Link
+                        href="https://www.instagram.com/florelle_maroc/"
+                        target="_blank"
+                        className="text-charcoal hover:text-gold hover:scale-110 transition-all duration-300"
+                    >
+                        <Instagram size={18} strokeWidth={1.5} />
+                    </Link>
+                </div>
+
+                <SearchBar />
                 <UserNav />
                 <CartButton />
             </div>
@@ -42,12 +94,7 @@ export const Navbar = () => {
     );
 };
 
-const SearchIcon = () => (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
-);
+
 
 const CartIcon = () => (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

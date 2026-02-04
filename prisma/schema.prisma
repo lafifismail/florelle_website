@@ -27,6 +27,7 @@ model User {
   updatedAt DateTime @updatedAt
   orders    Order[]
   addresses Address[]
+  reviews   Review[]
   
   @@map("users")
 }
@@ -54,6 +55,7 @@ model Product {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   orderItems  OrderItem[]
+  reviews     Review[]
   
   @@map("products")
   @@index([categoryId])
@@ -83,6 +85,7 @@ model Order {
   user            User        @relation(fields: [userId], references: [id])
   status          OrderStatus @default(PENDING)
   totalAmount     Float
+  shippingFee     Float?      // Snapshot of shipping cost at purchase time
   shippingAddress String      @db.Text // JSON
   billingAddress  String      @db.Text // JSON
   paymentMethod   String?
@@ -152,4 +155,40 @@ model Address {
 enum AddressType {
   SHIPPING
   BILLING
+}
+
+model SiteSettings {
+  id                    String  @id @default("default")
+  promoBannerVisible    Boolean @default(false)
+  promoBannerImageUrl   String?
+  promoBannerText       String?
+  promoBannerLink       String? // Existing field
+  
+  // Universe Banners
+  eyesBannerUrl         String?
+  lipsBannerUrl         String?
+  faceBannerUrl         String?
+  nailsBannerUrl        String?
+  
+  @@map("site_settings")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      // 1-5
+  comment   String   @db.Text
+  isApproved Boolean @default(false)
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("reviews")
+  @@index([productId])
+  @@index([userId])
 }

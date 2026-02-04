@@ -41,9 +41,11 @@ export default async function RelatedProducts({ currentProductId, categoryId }: 
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-12">
+                <div className="flex overflow-x-auto snap-x gap-4 pb-4 md:pb-0 md:grid md:grid-cols-4 md:gap-x-4 md:gap-y-12 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
                     {relatedProducts.map((product) => (
-                        <DBProductCard key={product.id} product={product} />
+                        <div key={product.id} className="min-w-[170px] w-[45vw] md:w-auto md:min-w-0 snap-start">
+                            <DBProductCard product={product} />
+                        </div>
                     ))}
                 </div>
             </div>

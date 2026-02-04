@@ -8,6 +8,10 @@ import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 import ProductGallery from '@/components/product/ProductGallery';
 import { ProductActions } from '@/components/product/ProductActions';
 import RelatedProducts from '@/components/product/RelatedProducts';
+import { getProductReviews, getReviewStats } from '@/lib/actions/reviews';
+import StarRating from '@/components/ui/StarRating';
+import ReviewList from '@/components/reviews/ReviewList';
+import ReviewForm from '@/components/reviews/ReviewForm';
 
 interface ProductPageProps {
     params: Promise<{
@@ -37,6 +41,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
     if (!product) {
         notFound();
     }
+
+    // Fetch Review Stats
+    const reviewStats = await getReviewStats(product.id);
+    const reviews = await getProductReviews(product.id);
 
     // Parse tags
     let tags: string[] = [];
@@ -103,16 +111,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                 {product.name}
                             </h1>
 
-                            {/* Price */}
-                            <div className="flex items-baseline gap-4">
-                                <div className="text-3xl font-bold text-charcoal">
-                                    {displayPrice.toFixed(0)} MAD
+                            {/* Rating and Price */}
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2" title={`${reviewStats.average.toFixed(1)}/5`}>
+                                    <StarRating rating={reviewStats.average} size={16} />
+                                    <span className="text-xs text-charcoal/50">({reviewStats.count} avis)</span>
                                 </div>
-                                {hasDiscount && (
-                                    <div className="text-xl text-charcoal/40 line-through">
-                                        {product.price.toFixed(0)} MAD
+
+                                <div className="flex items-baseline gap-4">
+                                    <div className="text-3xl font-bold text-charcoal">
+                                        {displayPrice.toFixed(0)} MAD
                                     </div>
-                                )}
+                                    {hasDiscount && (
+                                        <div className="text-xl text-charcoal/40 line-through">
+                                            {product.price.toFixed(0)} MAD
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
                             {/* Stock Status */}
@@ -184,7 +199,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                     </svg>
                                     <div>
                                         <p className="text-sm font-medium text-charcoal">Livraison gratuite</p>
-                                        <p className="text-xs text-charcoal/60">À partir de 500 MAD d'achat</p>
+                                        <p className="text-xs text-charcoal/60">Dès 400 MAD (Zone 1) ou 600 MAD (Zone 2)</p>
                                     </div>
                                 </div>
 
@@ -212,6 +227,30 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </div>
                 </div>
             </main>
+
+            {/* Reviews Section */}
+            <section className="py-16 bg-white border-t border-beige/20" id="reviews">
+                <div className="max-w-7xl mx-auto px-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <div className="mb-8">
+                                <h3 className="font-serif text-2xl mb-2 text-charcoal">Avis Clients</h3>
+                                <div className="flex items-center gap-3 mb-6">
+                                    <span className="text-5xl font-serif text-gold">{reviewStats.average.toFixed(1)}</span>
+                                    <div className="flex flex-col">
+                                        <StarRating rating={reviewStats.average} size={24} />
+                                        <span className="text-sm text-charcoal/50 uppercase tracking-widest mt-1">{reviewStats.count} avis</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ReviewList reviews={reviews} />
+                        </div>
+                        <div>
+                            <ReviewForm productId={product.id} />
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Related Products Section */}
             <RelatedProducts

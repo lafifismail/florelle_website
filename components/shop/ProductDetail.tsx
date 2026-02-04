@@ -11,7 +11,20 @@ interface ProductDetailProps {
     upsellProducts: Product[];
 }
 
-export const ProductDetail = ({ product, upsellProducts }: ProductDetailProps) => {
+import ReviewList from '@/components/reviews/ReviewList';
+import ReviewForm from '@/components/reviews/ReviewForm';
+import StarRating from '@/components/ui/StarRating';
+import { getSession } from 'next-auth/react'; // Client side auth check if needed, or just render form and let it handle auth
+
+interface ProductDetailProps {
+    product: Product;
+    upsellProducts: Product[];
+    dbProductId: string;
+    reviews: any[];
+    reviewStats: { average: number; count: number };
+}
+
+export const ProductDetail = ({ product, upsellProducts, dbProductId, reviews, reviewStats }: ProductDetailProps) => {
     const [selectedVariant, setSelectedVariant] = useState<Variant>(product.variants[0]);
     const router = useRouter();
 
@@ -56,7 +69,13 @@ export const ProductDetail = ({ product, upsellProducts }: ProductDetailProps) =
                     <header className="mb-8 space-y-2">
                         <p className="text-xs uppercase tracking-[0.3em] text-gold font-bold">{product.category} / {product.subcategory}</p>
                         <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal">{product.name}</h1>
-                        <p className="text-2xl font-sans text-gold-dark">{product.price} MAD</p>
+                        <div className="flex items-center gap-4">
+                            <p className="text-2xl font-sans text-gold-dark">{product.price} MAD</p>
+                            <div className="flex items-center gap-2" title={`${reviewStats.average.toFixed(1)}/5`}>
+                                <StarRating rating={reviewStats.average} size={16} />
+                                <span className="text-xs text-charcoal/50">({reviewStats.count} avis)</span>
+                            </div>
+                        </div>
                     </header>
 
                     <div className="prose prose-sm mb-12 text-charcoal/70 leading-relaxed font-sans">
@@ -114,6 +133,28 @@ export const ProductDetail = ({ product, upsellProducts }: ProductDetailProps) =
                     Acheter maintenant — {product.price} MAD
                 </Button>
             </div>
+
+            {/* Reviews Section */}
+            <section className="py-12 border-t border-beige/20" id="reviews">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <div className="mb-8">
+                            <h3 className="font-serif text-2xl mb-2">Avis Clients</h3>
+                            <div className="flex items-center gap-2 mb-4">
+                                <span className="text-4xl font-serif text-gold">{reviewStats.average.toFixed(1)}</span>
+                                <div className="flex flex-col">
+                                    <StarRating rating={reviewStats.average} size={20} />
+                                    <span className="text-xs text-charcoal/50 uppercase tracking-widest">{reviewStats.count} avis</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ReviewList reviews={reviews} />
+                    </div>
+                    <div>
+                        <ReviewForm productId={dbProductId} />
+                    </div>
+                </div>
+            </section>
 
             {/* Upsell Section */}
             {upsellProducts.length > 0 && (

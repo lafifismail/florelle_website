@@ -156,8 +156,17 @@ export async function createOrder(data: {
         });
     }
 
-    // Shipping Logic (Same as frontend: > 500 = Free, else 40)
-    const shippingCost = calculatedTotal > 500 ? 0 : 40;
+    // Shipping Logic (Zone-based)
+    // Import dynamically or assume it's available. To avoid circular deps or complex imports in server actions if any, we'll implement logic here or import the utility.
+    // Ideally we import the utility we just created.
+
+    const { calculateShippingFee } = await import('./shipping');
+    const city = shippingDetails.city;
+    const shippingCost = calculateShippingFee(city, calculatedTotal);
+
+    // Legacy support: if shippingCost logic fails for some reason, default to safe fallback? 
+    // No, strictly follow business rules.
+
     const finalTotal = calculatedTotal + shippingCost;
 
     // 3. Create Order
@@ -165,6 +174,7 @@ export async function createOrder(data: {
         data: {
             userId: user.id,
             totalAmount: finalTotal,
+            shippingFee: shippingCost, // Save the fee!
             status: 'PENDING',
             shippingAddress: JSON.stringify(shippingDetails),
             billingAddress: JSON.stringify(shippingDetails), // Same for COD
@@ -175,6 +185,33 @@ export async function createOrder(data: {
             }
         }
     });
+
+    // --- Send Email Simulation ---
+    try {
+        const { OrderConfirmationEmail } = await import('./mail-templates/OrderConfirmation');
+        const emailData = OrderConfirmationEmail(
+            order.id,
+            user.name || "Client",
+            orderItemsData.map(item => {
+                const product = dbProducts.find(p => p.id === item.productId);
+                return { name: product?.name || "Produit", quantity: item.quantity, price: item.price };
+            }),
+            finalTotal,
+            shippingCost // Pass shipping cost to email template
+        );
+
+        console.log("\n=================================================================================");
+        console.log("                           SIMULATION EMAIL CONFIRMATION                           ");
+        console.log("=================================================================================\n");
+        console.log(`TO: ${user.email}`);
+        console.log(`SUBJECT: ${emailData.subject}`);
+        console.log("\n--- HTML CONTENT (Preview) ---\n");
+        console.log(emailData.html);
+        console.log("\n=================================================================================\n");
+    } catch (e) {
+        console.error("Failed to simulate email:", e);
+    }
+    // ----------------------------
 
     return { success: true, orderId: order.id };
 }

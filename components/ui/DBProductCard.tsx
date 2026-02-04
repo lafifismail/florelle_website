@@ -4,8 +4,10 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import StarRating from './StarRating';
+
 // Type pour les produits de la base de données
-interface DBProduct {
+export interface DBProduct {
     id: string;
     name: string;
     slug: string;
@@ -21,6 +23,7 @@ interface DBProduct {
         name: string;
         slug: string;
     };
+    reviews?: { rating: number }[];
 }
 
 interface DBProductCardProps {
@@ -49,18 +52,24 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
     const displayPrice = product.salePrice || product.price;
     const hasDiscount = product.salePrice && product.salePrice < product.price;
 
+    // Calculate Rating
+    const reviewCount = product.reviews?.length || 0;
+    const averageRating = reviewCount > 0
+        ? product.reviews!.reduce((acc, r) => acc + r.rating, 0) / reviewCount
+        : 0;
+
     return (
         <Link
             href={`/products/${product.slug}`}
-            className="group block"
+            className="group block h-full flex flex-col"
         >
-            <div className="relative aspect-[3/4] overflow-hidden bg-off-white mb-4 transition-luxury flex items-center justify-center">
+            <div className="relative aspect-square overflow-hidden bg-stone-50 mb-4 transition-luxury flex items-center justify-center p-6">
                 <Image
                     src={mainImage}
                     alt={product.name}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-contain group-hover:scale-105 transition-luxury"
+                    className="object-contain mix-blend-multiply group-hover:scale-110 transition-luxury duration-700"
                     onError={(e) => {
                         // Fallback to placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
@@ -70,35 +79,49 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
 
                 {/* Discount badge */}
                 {hasDiscount && (
-                    <div className="absolute top-3 right-3 bg-gold text-white text-xs font-bold px-2 py-1 rounded-sm">
-                        PROMO
+                    <div className="absolute top-3 right-3 bg-gold text-white text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
+                        Promo
                     </div>
                 )}
 
                 {/* Out of stock badge */}
                 {product.stock === 0 && (
-                    <div className="absolute inset-0 bg-charcoal/50 flex items-center justify-center">
-                        <span className="text-white font-serif text-lg">Épuisé</span>
+                    <div className="absolute inset-0 bg-white/80 backdrop-blur-[1px] flex items-center justify-center">
+                        <span className="text-charcoal font-serif text-lg border border-charcoal px-4 py-2">Épuisé</span>
                     </div>
                 )}
             </div>
 
-            <div className="space-y-1">
+
+            <div className="space-y-2 flex-grow flex flex-col">
                 <p className="text-[10px] uppercase tracking-widest text-gold font-medium">
                     {product.category.name}
                 </p>
-                <h3 className="font-serif text-lg leading-tight group-hover:text-gold transition-luxury line-clamp-2">
+
+                <h3 className="font-serif text-lg leading-tight group-hover:text-gold transition-luxury line-clamp-2 h-12">
                     {product.name}
                 </h3>
-                <div className="flex items-center gap-2">
-                    <p className={`text-sm font-sans ${hasDiscount ? 'text-gold font-bold' : 'text-charcoal/70'}`}>
-                        {displayPrice.toFixed(0)} MAD
-                    </p>
-                    {hasDiscount && (
-                        <p className="text-xs font-sans text-charcoal/40 line-through">
-                            {product.price.toFixed(0)} MAD
-                        </p>
+
+                <div className="h-4">
+                    {reviewCount > 0 && (
+                        <div className="flex gap-1 items-center">
+                            <StarRating rating={averageRating} size={12} />
+                            <span className="text-[10px] text-charcoal/40">({reviewCount})</span>
+                        </div>
                     )}
+                </div>
+                <div className="mt-auto flex items-center justify-between pt-2 border-t border-transparent group-hover:border-beige/20 transition-colors">
+                    <div className="flex items-center gap-2">
+                        <p className={`text-sm font-sans ${hasDiscount ? 'text-gold font-bold' : 'text-charcoal/80'}`}>
+                            {displayPrice.toFixed(0)} MAD
+                        </p>
+                        {hasDiscount && (
+                            <p className="text-xs font-sans text-charcoal/40 line-through">
+                                {product.price.toFixed(0)} MAD
+                            </p>
+                        )}
+                    </div>
+                    {/* Add to cart icon on hover could go here, for now keeping it clean as requested */}
                 </div>
             </div>
         </Link>
