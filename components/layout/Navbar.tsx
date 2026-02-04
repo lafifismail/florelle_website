@@ -4,7 +4,7 @@ import { UserNav } from '@/components/layout/UserNav';
 import { SearchBar } from '@/components/layout/SearchBar';
 import { getShopStructure } from '@/lib/products';
 import { CartButton } from '@/components/ui/CartButton';
-import { User, Instagram } from 'lucide-react';
+import { User, Instagram, LayoutDashboard, ShoppingBag, Package, Users, Star } from 'lucide-react';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { MobileMenu } from '@/components/layout/MobileMenu';
@@ -30,24 +30,21 @@ export const Navbar = async () => {
                 </Link>
 
                 {isAdmin && (
-                    <div className="hidden md:flex gap-2">
-                        <Link
-                            href="/admin/dashboard"
-                            className="text-xs font-bold text-charcoal border border-charcoal/20 px-3 py-1 rounded-sm hover:bg-charcoal hover:text-white transition-colors"
-                        >
-                            DASHBOARD
+                    <div className="hidden md:flex items-center gap-1 border-l border-beige/20 pl-4">
+                        <Link href="/admin" title="Dashboard" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                            <LayoutDashboard size={18} />
                         </Link>
-                        <Link
-                            href="/admin/users"
-                            className="text-xs font-bold text-active-gold border border-active-gold px-3 py-1 rounded-sm hover:bg-active-gold hover:text-white transition-colors"
-                        >
-                            USERS
+                        <Link href="/admin/products" title="Produits" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                            <ShoppingBag size={18} />
                         </Link>
-                        <Link
-                            href="/admin/orders"
-                            className="text-xs font-bold text-charcoal border border-charcoal/20 px-3 py-1 rounded-sm hover:bg-charcoal hover:text-white transition-colors"
-                        >
-                            COMMANDES
+                        <Link href="/admin/orders" title="Commandes" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                            <Package size={18} />
+                        </Link>
+                        <Link href="/admin/users" title="Clients" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                            <Users size={18} />
+                        </Link>
+                        <Link href="/admin/reviews" title="Avis" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                            <Star size={18} />
                         </Link>
                     </div>
                 )}

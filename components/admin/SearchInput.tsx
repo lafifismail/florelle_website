@@ -1,42 +1,52 @@
 'use client';
 
-import { Search } from 'lucide-react';
-import { useSearchParams, usePathname, useRouter } from 'next/navigation';
-import { useDebouncedCallback } from 'use-debounce';
+import { Search } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
+import { useState, useEffect } from "react";
 
-export function SearchInput({ placeholder, defaultValue }: { placeholder: string, defaultValue?: string }) {
+export default function SearchInput({ placeholder }: { placeholder: string }) {
     const searchParams = useSearchParams();
-    const pathname = usePathname();
     const { replace } = useRouter();
 
+    // On initialise le state avec la valeur de l'URL pour être synchro au chargement
+    const [term, setTerm] = useState(searchParams.get('query')?.toString() || '');
+
+    // Cette fonction gère la mise à jour de l'URL avec un délai (pour ne pas spammer)
     const handleSearch = useDebouncedCallback((term: string) => {
         const params = new URLSearchParams(searchParams);
 
-        // Reset to page 1 when searching
-        params.set('page', '1');
+        params.set('page', '1'); // On revient toujours à la page 1 quand on cherche
 
         if (term) {
             params.set('query', term);
         } else {
-            params.delete('query');
+            params.delete('query'); // C'est ici que la suppression se fait
         }
 
-        replace(`${pathname}?${params.toString()}`);
+        replace(`${window.location.pathname}?${params.toString()}`);
     }, 300);
 
+    // Effet pour garder l'input synchro si l'URL change autrement (ex: navigation arrière)
+    useEffect(() => {
+        setTerm(searchParams.get('query')?.toString() || '');
+    }, [searchParams]);
+
     return (
-        <div className="relative flex-1 w-full">
+        <div className="relative flex flex-1 flex-shrink-0">
             <label htmlFor="search" className="sr-only">
-                Rechercher
+                Recherche
             </label>
             <input
-                className="peer block w-full rounded-md border border-gray-300 py-3 pl-10 text-base outline-none focus:border-gold focus:ring-1 focus:ring-gold/50 placeholder:text-gray-500 bg-white text-black appearance-none transition-all relative z-10"
+                className="peer block w-full rounded-md border border-gray-200 bg-white py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-gray-900 focus:border-gold focus:ring-gold"
                 placeholder={placeholder}
-                style={{ color: 'black', opacity: 1 }}
-                onChange={(e) => handleSearch(e.target.value)}
-                defaultValue={defaultValue}
+                onChange={(e) => {
+                    setTerm(e.target.value); // Met à jour l'affichage immédiatement
+                    handleSearch(e.target.value); // Lance la recherche (URL) après 300ms
+                }}
+                value={term} // L'input est maintenant "contrôlé", impossible d'avoir des bugs d'affichage
             />
-            <Search className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-400 peer-focus:text-gold transition-colors z-20 pointer-events-none" />
+            <Search className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
         </div>
     );
 }
