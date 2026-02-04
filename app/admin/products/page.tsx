@@ -122,7 +122,7 @@ export default async function AdminProductsPage({ searchParams }: AdminProductsP
 
                     <div className="bg-white border border-beige/20 rounded-sm shadow-sm overflow-hidden flex flex-col">
                         <div className="overflow-x-auto">
-                            <table className="w-full text-left">
+                            <table className="min-w-[800px] w-full text-left">
                                 <thead className="bg-charcoal text-white uppercase text-[10px] tracking-widest">
                                     <tr>
                                         <th className="px-6 py-4 font-medium">Image</th>

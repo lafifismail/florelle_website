@@ -69,7 +69,7 @@ export default async function AdminOrdersPage({ searchParams }: AdminOrdersPageP
 
                 <div className="bg-white shadow-luxury rounded-sm overflow-hidden border border-beige/20">
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left text-sm">
+                        <table className="min-w-[800px] w-full text-left text-sm">
                             <thead className="bg-gray-50 border-b border-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider">
                                 <tr>
                                     <th className="p-4">Commande</th>

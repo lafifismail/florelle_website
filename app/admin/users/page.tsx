@@ -67,7 +67,7 @@ export default async function AdminUsersPage({ searchParams }: AdminUsersPagePro
 
                 <div className="bg-white shadow-luxury rounded-sm overflow-hidden border border-beige/20">
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left">
+                        <table className="min-w-[800px] w-full text-left">
                             <thead className="bg-gray-50 border-b border-gray-100">
                                 <tr>
                                     <th className="p-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Utilisateur</th>
@@ -123,6 +123,7 @@ export default async function AdminUsersPage({ searchParams }: AdminUsersPagePro
                         </table>
                     </div>
                 </div>
+
             </main>
         </div>
     );
