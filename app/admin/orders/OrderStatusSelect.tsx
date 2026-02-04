@@ -46,7 +46,8 @@ export const OrderStatusSelect = ({ orderId, currentStatus }: OrderStatusSelectP
                     appearance-none pl-3 pr-8 py-1 rounded text-xs font-medium border cursor-pointer outline-none focus:ring-1 focus:ring-gold
                     ${currentStatus === 'DELIVERED' ? 'bg-green-50 text-green-700 border-green-200' :
                         currentStatus === 'CANCELLED' ? 'bg-red-50 text-red-700 border-red-200' :
-                            'bg-white text-gray-700 border-gray-200 hover:border-gold'}
+                            currentStatus === 'SHIPPED' ? 'bg-blue-50 text-blue-700 border-blue-200' :
+                                'bg-yellow-50 text-yellow-700 border-yellow-200 hover:border-gold'}
                 `}
             >
                 {STATUSES.map(s => (

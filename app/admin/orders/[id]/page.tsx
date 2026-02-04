@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect, notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-import { Navbar } from '@/components/layout/Navbar';
 import { OrderStepper } from '@/components/orders/OrderStepper';
 import { OrderStatusSelect } from '../OrderStatusSelect';
 import Link from 'next/link';
@@ -46,9 +45,8 @@ export default async function AdminOrderDetailsPage({ params }: AdminOrderDetail
     return (
         <div className="space-y-8 bg-off-white min-h-screen">
             {/* Navbar Admin (Assurez-vous qu'elle gère le mobile ou utilisez le Layout) */}
-            <Navbar />
 
-            <div className="pt-24 px-4 md:px-0 max-w-6xl mx-auto pb-12">
+            <div className="px-4 md:px-0 max-w-6xl mx-auto pb-12">
 
                 {/* Header with Navigation and Actions */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-6 text-center md:text-left">

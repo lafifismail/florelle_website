@@ -54,11 +54,11 @@ export default async function OrderDetailsPage({ params }: OrderPageProps) {
     return (
         <div className="min-h-screen flex flex-col bg-off-white">
             <Navbar />
-            <main className="flex-grow pt-24 pb-24 px-4 md:px-12 max-w-5xl mx-auto w-full">
+            <main className="flex-grow pt-32 md:pt-24 pb-24 px-4 md:px-12 max-w-5xl mx-auto w-full">
                 {/* Header */}
-                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
                     <div>
-                        <Link href="/profile" className="text-xs text-gold uppercase tracking-widest hover:underline mb-2 block">
+                        <Link href="/profile/orders" className="inline-block py-3 pr-6 -ml-2 text-xs text-gold uppercase tracking-widest hover:underline mb-2 font-bold">
                             &larr; Retour à mes commandes
                         </Link>
                         <h1 className="font-serif text-3xl text-charcoal">Commande #{order.id.slice(-6).toUpperCase()}</h1>

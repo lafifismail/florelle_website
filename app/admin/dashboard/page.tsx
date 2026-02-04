@@ -29,14 +29,14 @@ export default async function AdminDashboard() {
 
     return (
         <div className="min-h-screen bg-off-white">
-            <Navbar />
-            <main className="pt-24 px-4 md:px-12 max-w-7xl mx-auto pb-12">
+
+            <main className="px-4 md:px-12 max-w-7xl mx-auto pb-12">
                 <div className="space-y-8 md:space-y-12 animate-in fade-in duration-500">
                     {/* Header */}
                     <header className="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-beige/20 pb-6 gap-4">
                         <div>
                             <h1 className="font-serif text-3xl md:text-4xl text-charcoal">Tableau de Bord</h1>
-                            <p className="text-xs uppercase tracking-widest text-gold mt-2 font-bold">Vue d'ensemble</p>
+                            <p className="text-xs uppercase tracking-widest text-gold mt-2 font-bold">Vue d'overview</p>
                         </div>
                         <div className="text-xs text-charcoal/40 text-right hidden md:block">
                             <p>Dernière mise à jour</p>
@@ -53,13 +53,18 @@ export default async function AdminDashboard() {
                             border="border-gold/30"
                             bg="bg-gold/5"
                         />
-                        <KpiCard
-                            title="Commandes en attente"
-                            value={pendingOrders}
-                            icon={<Clock size={24} className="text-blue-500" />}
-                            border="border-blue-200"
-                            bg="bg-blue-50"
-                        />
+                        <Link href="/admin/orders?status=PENDING" className="block group">
+                            <div className="bg-white p-6 rounded-sm shadow-sm border border-blue-200 flex items-center justify-between relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-110 transition-transform duration-500" />
+                                <div className="relative z-10">
+                                    <p className="text-[10px] uppercase tracking-widest opacity-60 font-bold mb-2 text-charcoal group-hover:text-blue-600 transition-colors">Commandes en attente</p>
+                                    <p className="text-3xl font-serif text-charcoal group-hover:text-blue-700 transition-colors">{pendingOrders}</p>
+                                </div>
+                                <div className="p-3 rounded-full bg-blue-50 relative z-10 group-hover:bg-blue-100 group-hover:shadow-sm transition-all">
+                                    <Clock size={24} className="text-blue-500" />
+                                </div>
+                            </div>
+                        </Link>
                         <Link href="/admin/products?filter=low-stock" className="block group">
                             {/* Low Stock Card - Clickable */}
                             <div className="bg-white p-6 rounded-sm shadow-sm border border-red-200 flex items-center justify-between relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-105 cursor-pointer">

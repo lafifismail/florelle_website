@@ -20,6 +20,7 @@ export default async function AdminProductsPage({
 
     const resolvedSearchParams = await searchParams;
     const page = Number(resolvedSearchParams.page) || 1;
+    const filter = typeof resolvedSearchParams.filter === 'string' ? resolvedSearchParams.filter : '';
     const search = typeof resolvedSearchParams.query === 'string' ? resolvedSearchParams.query : '';
     const category = typeof resolvedSearchParams.category === 'string' ? resolvedSearchParams.category : '';
 
@@ -39,6 +40,12 @@ export default async function AdminProductsPage({
     if (category && category !== 'all') {
         where.category = {
             name: category
+        };
+    }
+
+    if (filter === 'low-stock') {
+        where.stock = {
+            lte: 9
         };
     }
 
@@ -145,7 +152,7 @@ export default async function AdminProductsPage({
                                         <td className="p-4 font-medium text-gold">{product.price.toFixed(0)} MAD</td>
                                         <td className="p-4">
                                             <span className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${product.stock > 10 ? 'bg-green-50 text-green-700' :
-                                                    product.stock > 0 ? 'bg-orange-50 text-orange-700' : 'bg-red-50 text-red-700'
+                                                product.stock > 0 ? 'bg-orange-50 text-orange-700' : 'bg-red-50 text-red-700'
                                                 }`}>
                                                 {product.stock} en stock
                                             </span>

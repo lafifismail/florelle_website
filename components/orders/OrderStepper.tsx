@@ -26,46 +26,47 @@ export const OrderStepper = ({ status }: OrderStepperProps) => {
     }
 
     return (
-        <div className="w-full py-8">
-            <div className="flex items-center justify-between relative px-4">
-                {/* Background Line */}
-                <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[1px] bg-gray-100 z-0 mx-8" />
-
-                {/* Active Line Progress */}
-                <div
-                    className="absolute left-0 top-1/2 -translate-y-1/2 h-[1px] bg-gold z-0 mx-8 transition-all duration-1000 ease-in-out"
-                    style={{ width: `${(activeIndex / (STEPS.length - 1)) * 90}%` }} // Approximate width
-                />
-
+        <div className="w-full pt-8 pb-16 px-4">
+            <div className="flex items-center justify-between w-full">
                 {STEPS.map((step, index) => {
                     const isCompleted = index <= activeIndex;
                     const isLast = index === activeIndex;
 
                     return (
-                        <div key={step.key} className="relative z-10 flex flex-col items-center gap-3">
-                            <div
-                                className={`
-                                    w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-500
-                                    ${isCompleted ? 'bg-white border-gold text-gold' : 'bg-white border-gray-200 text-gray-200'}
-                                    ${isLast ? 'shadow-[0_0_0_4px_rgba(197,160,89,0.2)]' : ''}
-                                `}
-                            >
-                                {index < activeIndex ? (
-                                    <Check size={14} strokeWidth={3} />
-                                ) : (
-                                    <div className={`w-2 h-2 rounded-full ${isCompleted ? 'bg-gold' : 'bg-gray-200'}`} />
-                                )}
+                        <React.Fragment key={step.key}>
+                            {/* Step Circle & Label */}
+                            <div className="relative flex flex-col items-center">
+                                <div
+                                    className={`
+                                        w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-500 z-10 bg-white
+                                        ${isCompleted ? 'border-gold text-gold' : 'border-gray-200 text-gray-200'}
+                                        ${isLast ? 'shadow-[0_0_0_4px_rgba(197,160,89,0.2)]' : ''}
+                                    `}
+                                >
+                                    {index < activeIndex ? (
+                                        <Check size={14} strokeWidth={3} />
+                                    ) : (
+                                        <div className={`w-2 h-2 rounded-full ${isCompleted ? 'bg-gold' : 'bg-gray-200'}`} />
+                                    )}
+                                </div>
+
+                                {/* Label - Position Absolute but centered */}
+                                <div
+                                    className={`
+                                        absolute top-14 left-1/2 -translate-x-1/2 text-center
+                                        text-[9px] md:text-xs uppercase tracking-widest font-bold w-20 leading-3
+                                        ${isCompleted ? 'text-charcoal' : 'text-gray-300'}
+                                    `}
+                                >
+                                    {step.label}
+                                </div>
                             </div>
-                            <div
-                                className={`
-                                    absolute top-10 w-24 left-1/2 -translate-x-1/2 text-center leading-tight
-                                    text-[10px] md:text-xs uppercase tracking-widest font-bold
-                                    ${isCompleted ? 'text-charcoal' : 'text-gray-300'}
-                                `}
-                            >
-                                {step.label}
-                            </div>
-                        </div>
+
+                            {/* Connector Line (except after last item) */}
+                            {index < STEPS.length - 1 && (
+                                <div className={`h-[1px] flex-1 mx-1 ${index < activeIndex ? 'bg-gold' : 'bg-gray-200'}`} />
+                            )}
+                        </React.Fragment>
                     );
                 })}
             </div>

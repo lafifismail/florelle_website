@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Eye, Package } from "lucide-react";
 import { Pagination } from "@/components/admin/Pagination";
 import SearchInput from "@/components/admin/SearchInput";
+import { OrderStatusSelect } from "./OrderStatusSelect";
 
 
 export const dynamic = 'force-dynamic';
@@ -81,8 +82,8 @@ export default async function AdminOrdersPage({
                                 key={s}
                                 href={`/admin/orders?status=${s}`}
                                 className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap border transition-colors ${(status === s || (s === 'all' && !status))
-                                        ? 'bg-charcoal text-white border-charcoal'
-                                        : 'bg-white text-gray-600 border-gray-200 hover:border-gold'
+                                    ? 'bg-charcoal text-white border-charcoal'
+                                    : 'bg-white text-gray-600 border-gray-200 hover:border-gold'
                                     }`}
                             >
                                 {s === 'all' ? 'Tout' : s}
@@ -116,9 +117,11 @@ export default async function AdminOrdersPage({
                             ) : (
                                 orders.map((order) => (
                                     <tr key={order.id} className="group hover:bg-off-white/50 transition-colors">
-                                        <td className="p-4 font-medium text-charcoal flex items-center gap-2">
-                                            <Package size={16} className="text-gold" />
-                                            #{order.id.slice(-6).toUpperCase()}
+                                        <td className="p-4 font-medium text-charcoal">
+                                            <Link href={`/admin/orders/${order.id}`} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+                                                <Package size={16} className="text-gold" />
+                                                #{order.id.slice(-6).toUpperCase()}
+                                            </Link>
                                         </td>
                                         <td className="p-4 text-charcoal/70 whitespace-nowrap">
                                             {new Date(order.createdAt).toLocaleDateString('fr-FR')}
@@ -127,13 +130,7 @@ export default async function AdminOrdersPage({
                                             {order.user?.name || order.user?.email || "Invité"}
                                         </td>
                                         <td className="p-4">
-                                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${order.status === 'DELIVERED' ? 'bg-green-50 text-green-700 border-green-100' :
-                                                    order.status === 'CANCELLED' ? 'bg-red-50 text-red-700 border-red-100' :
-                                                        order.status === 'SHIPPED' ? 'bg-blue-50 text-blue-700 border-blue-100' :
-                                                            'bg-yellow-50 text-yellow-700 border-yellow-100'
-                                                }`}>
-                                                {order.status}
-                                            </span>
+                                            <OrderStatusSelect orderId={order.id} currentStatus={order.status} />
                                         </td>
                                         <td className="p-4 font-bold text-charcoal">
                                             {order.totalAmount.toFixed(0)} MAD
