@@ -38,6 +38,7 @@ export default function SearchInput({ placeholder }: { placeholder: string }) {
                 Recherche
             </label>
             <input
+                id="search"
                 className="peer block w-full rounded-md border border-gray-200 bg-white py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500 text-gray-900 focus:border-gold focus:ring-gold"
                 placeholder={placeholder}
                 onChange={(e) => {
@@ -45,6 +46,7 @@ export default function SearchInput({ placeholder }: { placeholder: string }) {
                     handleSearch(e.target.value); // Lance la recherche (URL) après 300ms
                 }}
                 value={term} // L'input est maintenant "contrôlé", impossible d'avoir des bugs d'affichage
+                suppressHydrationWarning
             />
             <Search className="absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
         </div>
