@@ -7,6 +7,8 @@ import { Search, X } from 'lucide-react';
 export const SearchBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState('');
+    const [isPressed, setIsPressed] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const router = useRouter();
     const searchParams = useSearchParams();
     const inputRef = useRef<HTMLInputElement>(null);
@@ -14,6 +16,7 @@ export const SearchBar = () => {
 
     // Initial load: set query from URL if param exists
     useEffect(() => {
+        setMounted(true);
         const q = searchParams.get('q');
         if (q) setQuery(q);
     }, [searchParams]);
@@ -29,7 +32,7 @@ export const SearchBar = () => {
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-                if (!query) setIsOpen(false); // Only close if empty, otherwise keep user context or let them close manually
+                if (!query) setIsOpen(false);
             }
         };
 
@@ -46,19 +49,43 @@ export const SearchBar = () => {
     };
 
     const toggleSearch = () => {
-        setIsOpen(!isOpen);
-        if (!isOpen) {
-            // Opening
-            setTimeout(() => inputRef.current?.focus(), 100);
-        }
+        setIsPressed(true);
+        setTimeout(() => {
+            setIsOpen(!isOpen);
+            setIsPressed(false);
+            if (!isOpen) {
+                setTimeout(() => inputRef.current?.focus(), 100);
+            }
+        }, 150);
     };
+
+    if (!mounted) {
+        return (
+            <div className="relative flex items-center">
+                <button className="p-2 text-charcoal relative">
+                    <Search size={20} strokeWidth={1.5} />
+                </button>
+            </div>
+        );
+    }
 
     return (
         <div ref={containerRef} className="relative flex items-center">
             {/* Desktop & Mobile Toggle Button */}
             <button
                 onClick={toggleSearch}
-                className="p-2 text-charcoal hover:text-gold transition-colors duration-300 z-20 relative"
+                onTouchStart={() => setIsPressed(true)}
+                onTouchEnd={() => setTimeout(() => setIsPressed(false), 200)}
+                onMouseDown={() => setIsPressed(true)}
+                onMouseUp={() => setIsPressed(false)}
+                onMouseLeave={() => setIsPressed(false)}
+                className={`
+                    p-2 rounded-full transition-all duration-150 z-20 relative
+                    ${isPressed
+                        ? 'bg-charcoal text-white scale-95'
+                        : 'text-charcoal hover:text-gold'
+                    }
+                `}
                 aria-label="Rechercher"
             >
                 {isOpen ? <X size={20} strokeWidth={1.5} /> : <Search size={20} strokeWidth={1.5} />}
@@ -69,8 +96,6 @@ export const SearchBar = () => {
                 className={`
                     absolute right-0 top-1/2 -translate-y-1/2 h-10 bg-white shadow-sm flex items-center overflow-hidden transition-all duration-300 ease-in-out z-10
                     ${isOpen ? 'w-[calc(100vw-40px)] md:w-64 opacity-100 pr-10 pl-2 border border-gray-200 rounded-sm' : 'w-0 opacity-0 border-none'}
-                    /* Mobile Override: On small screens, position differently to avoid overflow issues if needed. 
-                       Currently using right-0 with viewport calc width to cover header space safely. */
                     md:right-0 md:origin-right
                     max-md:fixed max-md:top-[64px] max-md:left-0 max-md:w-full max-md:h-16 max-md:border-b max-md:border-gray-100 max-md:justify-center max-md:px-4 max-md:bg-white max-md:translate-y-0
                 `}

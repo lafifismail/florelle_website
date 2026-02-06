@@ -17,8 +17,9 @@ const REELS = Array.from({ length: 8 }, (_, i) => ({
 const SocialCard = ({ reel }: { reel: typeof REELS[0] }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isHovering, setIsHovering] = useState(false);
+    const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    const handleMouseEnter = () => {
+    const startVideo = () => {
         setIsHovering(true);
         if (videoRef.current) {
             videoRef.current.play().catch(() => {
@@ -27,12 +28,36 @@ const SocialCard = ({ reel }: { reel: typeof REELS[0] }) => {
         }
     };
 
-    const handleMouseLeave = () => {
+    const stopVideo = () => {
         setIsHovering(false);
         if (videoRef.current) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
         }
+        // Clear any pending timeout
+        if (touchTimeoutRef.current) {
+            clearTimeout(touchTimeoutRef.current);
+            touchTimeoutRef.current = null;
+        }
+    };
+
+    const handleMouseEnter = () => {
+        startVideo();
+    };
+
+    const handleMouseLeave = () => {
+        stopVideo();
+    };
+
+    // Mobile touch handlers - video starts after touching for 300ms
+    const handleTouchStart = () => {
+        touchTimeoutRef.current = setTimeout(() => {
+            startVideo();
+        }, 300);
+    };
+
+    const handleTouchEnd = () => {
+        stopVideo();
     };
 
     return (
@@ -40,9 +65,12 @@ const SocialCard = ({ reel }: { reel: typeof REELS[0] }) => {
             href={reel.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="block relative aspect-[9/16] rounded-xl overflow-hidden group bg-gray-100"
+            className="block relative aspect-[9/16] rounded-xl overflow-hidden group bg-gray-100 active:scale-95 transition-transform duration-150"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
         >
             {/* Static Cover Image */}
             <Image

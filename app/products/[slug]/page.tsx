@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
@@ -34,6 +35,47 @@ async function getProduct(slug: string) {
     return product;
 }
 
+// Generate Metadata
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+    const { slug } = await params;
+    const product = await getProduct(slug);
+
+    if (!product) {
+        return {
+            title: 'Produit non trouvé',
+            description: 'Le produit que vous cherchez n\'existe pas.',
+        };
+    }
+
+    const mainImage = Array.isArray(product.images)
+        ? product.images[0]
+        : (JSON.parse(product.images as string)[0] || '/images/placeholder-product.jpg');
+
+    return {
+        title: product.name,
+        description: product.description?.slice(0, 160) || `Achetez ${product.name} chez Florelle Beauty Maroc.`,
+        openGraph: {
+            title: product.name,
+            description: product.description?.slice(0, 160),
+            images: [
+                {
+                    url: mainImage,
+                    width: 800,
+                    height: 800,
+                    alt: product.name,
+                },
+            ],
+            type: 'website',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: product.name,
+            description: product.description?.slice(0, 160),
+            images: [mainImage],
+        },
+    };
+}
+
 export default async function ProductPage({ params }: ProductPageProps) {
     const { slug } = await params;
     const product = await getProduct(slug);
@@ -63,8 +105,43 @@ export default async function ProductPage({ params }: ProductPageProps) {
         ? Math.round(((product.price - product.salePrice) / product.price) * 100)
         : 0;
 
+    // JSON-LD Structured Data
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        name: product.name,
+        image: Array.isArray(product.images) ? product.images : JSON.parse(product.images as string),
+        description: product.description,
+        brand: {
+            '@type': 'Brand',
+            name: 'Florelle Beauty'
+        },
+        offers: {
+            '@type': 'Offer',
+            url: `https://florelle.ma/products/${product.slug}`,
+            priceCurrency: 'MAD',
+            price: displayPrice,
+            priceValidUntil: '2026-12-31',
+            itemCondition: 'https://schema.org/NewCondition',
+            availability: product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+            seller: {
+                '@type': 'Organization',
+                name: 'Florelle Beauty Maroc'
+            }
+        },
+        aggregateRating: reviewStats.count > 0 ? {
+            '@type': 'AggregateRating',
+            ratingValue: reviewStats.average,
+            reviewCount: reviewStats.count
+        } : undefined
+    };
+
     return (
         <div className="min-h-screen flex flex-col">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Navbar />
 
             <main className="flex-grow bg-off-white">

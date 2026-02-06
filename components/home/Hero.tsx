@@ -36,7 +36,8 @@ export const Hero = () => {
                             src={image}
                             alt={`Florelle Beauty Hero ${index + 1}`}
                             fill
-                            priority={index === 0}
+                            priority
+                            quality={85}
                             className="object-cover object-top"
                             sizes="100vw"
                         />

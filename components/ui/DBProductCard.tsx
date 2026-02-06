@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -31,6 +31,8 @@ interface DBProductCardProps {
 }
 
 export const DBProductCard = ({ product }: DBProductCardProps) => {
+    const [isPressed, setIsPressed] = useState(false);
+
     // Parse images - handle both Json type (array) and legacy string format
     let imageUrls: string[] = [];
     try {
@@ -62,14 +64,28 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
         <Link
             href={`/products/${product.slug}`}
             className="group block h-full flex flex-col"
+            onTouchStart={() => setIsPressed(true)}
+            onTouchEnd={() => setTimeout(() => setIsPressed(false), 200)}
+            onMouseDown={() => setIsPressed(true)}
+            onMouseUp={() => setIsPressed(false)}
+            onMouseLeave={() => setIsPressed(false)}
         >
-            <div className="relative aspect-square overflow-hidden bg-stone-50 mb-4 transition-luxury flex items-center justify-center p-6">
+            <div className={`
+                relative aspect-square overflow-hidden bg-stone-50 mb-4 flex items-center justify-center p-6
+                transition-all duration-200 active:scale-95 active:shadow-sm
+                ${isPressed ? 'scale-95 shadow-lg rounded-lg' : ''}
+            `}>
                 <Image
                     src={mainImage}
                     alt={product.name}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-contain mix-blend-multiply group-hover:scale-110 transition-luxury duration-700"
+                    loading="lazy"
+                    quality={80}
+                    className={`
+                        object-contain mix-blend-multiply transition-all duration-300
+                        ${isPressed ? 'scale-90' : 'group-hover:scale-110'}
+                    `}
                     onError={(e) => {
                         // Fallback to placeholder if image fails to load
                         const target = e.target as HTMLImageElement;
@@ -98,7 +114,10 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
                     {product.category.name}
                 </p>
 
-                <h3 className="font-serif text-lg leading-tight group-hover:text-gold transition-luxury line-clamp-2 h-12">
+                <h3 className={`
+                    font-serif text-lg leading-tight transition-all duration-200 line-clamp-2 h-12
+                    ${isPressed ? 'text-gold' : 'group-hover:text-gold'}
+                `}>
                     {product.name}
                 </h3>
 
@@ -127,3 +146,4 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
         </Link>
     );
 };
+

@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { LogoutButton } from '@/components/auth/LogoutButton';
 import { updateProfile } from '@/lib/actions';
+import { Lock, Edit2, LogOut } from 'lucide-react';
+import ChangePasswordForm from './ChangePasswordForm';
 
 // Helper to mask CIN
 const maskCIN = (cin: string | null) => {
@@ -22,6 +24,7 @@ interface User {
 
 export const ProfileCard = ({ user }: { user: User }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: user.name || '',
@@ -35,8 +38,6 @@ export const ProfileCard = ({ user }: { user: User }) => {
         try {
             await updateProfile(formData);
             setIsEditing(false);
-            // In a real app, use toast
-            // alert("Profil mis à jour avec succès !"); 
         } catch (error) {
             console.error(error);
             alert("Erreur lors de la mise à jour.");
@@ -114,46 +115,69 @@ export const ProfileCard = ({ user }: { user: User }) => {
 
     // View Mode
     return (
-        <div className="bg-white p-6 shadow-sm border border-beige/20 rounded-sm h-full flex flex-col">
-            <div className="flex items-center justify-between mb-6">
-                <h2 className="font-serif text-xl text-charcoal">Mon Profil</h2>
-                <span className="text-xs bg-gold/10 text-gold-dark px-2 py-1 rounded-full font-medium">Vérifié</span>
-            </div>
+        <>
+            <div className="bg-white p-6 shadow-sm border border-beige/20 rounded-sm h-full flex flex-col">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="font-serif text-xl text-charcoal">Mon Profil</h2>
+                    <span className="text-xs bg-gold/10 text-gold-dark px-2 py-1 rounded-full font-medium">Vérifié</span>
+                </div>
 
-            <div className="space-y-4 flex-grow">
-                <div className="space-y-1">
-                    <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Nom Complet</p>
-                    <p className="font-medium text-sm text-charcoal">{user.name}</p>
-                </div>
-                <div className="space-y-1">
-                    <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Email</p>
-                    <p className="font-medium text-sm text-charcoal">{user.email}</p>
-                </div>
-                <div className="space-y-1">
-                    <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Téléphone</p>
-                    <p className="font-medium text-sm text-charcoal">{user.phone || '--'}</p>
-                </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-4 flex-grow">
                     <div className="space-y-1">
-                        <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Ville</p>
-                        <p className="font-medium text-sm text-charcoal">{user.city || '--'}</p>
+                        <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Nom Complet</p>
+                        <p className="font-medium text-sm text-charcoal">{user.name}</p>
                     </div>
                     <div className="space-y-1">
-                        <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">CIN</p>
-                        <p className="font-medium text-sm font-mono text-charcoal/80">
-                            {maskCIN(user.cin)}
-                        </p>
+                        <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Email</p>
+                        <p className="font-medium text-sm text-charcoal">{user.email}</p>
                     </div>
+                    <div className="space-y-1">
+                        <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Téléphone</p>
+                        <p className="font-medium text-sm text-charcoal">{user.phone || '--'}</p>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1">
+                            <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">Ville</p>
+                            <p className="font-medium text-sm text-charcoal">{user.city || '--'}</p>
+                        </div>
+                        <div className="space-y-1">
+                            <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold">CIN</p>
+                            <p className="font-medium text-sm font-mono text-charcoal/80">
+                                {maskCIN(user.cin)}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Compressed Action Buttons */}
+                <div className="mt-6 pt-4 border-t border-beige/10 space-y-2">
+                    {/* Row 1: Edit & Password */}
+                    <div className="flex gap-2">
+                        <button
+                            onClick={() => setIsEditing(true)}
+                            className="flex-1 flex items-center justify-center gap-2 py-2 px-3 text-xs font-medium border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-white transition-all rounded-sm"
+                        >
+                            <Edit2 size={14} />
+                            <span className="hidden sm:inline">Modifier</span>
+                        </button>
+                        <button
+                            onClick={() => setShowPasswordModal(true)}
+                            className="flex-1 flex items-center justify-center gap-2 py-2 px-3 text-xs font-medium border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-white transition-all rounded-sm"
+                        >
+                            <Lock size={14} />
+                            <span className="hidden sm:inline">Mot de passe</span>
+                        </button>
+                    </div>
+
+                    {/* Row 2: Logout */}
+                    <LogoutButton compact />
                 </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-beige/10">
-                <Button variant="outline" fullWidth onClick={() => setIsEditing(true)}>
-                    Modifier mes informations
-                </Button>
-                <div className="mt-4"></div>
-                <LogoutButton />
-            </div>
-        </div>
+            {/* Password Modal */}
+            {showPasswordModal && (
+                <ChangePasswordForm onClose={() => setShowPasswordModal(false)} />
+            )}
+        </>
     );
 };

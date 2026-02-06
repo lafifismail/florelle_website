@@ -31,19 +31,19 @@ export const Navbar = async () => {
 
                 {isAdmin && (
                     <div className="hidden md:flex items-center gap-1 border-l border-beige/20 pl-4">
-                        <Link href="/admin" title="Dashboard" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                        <Link href="/admin" title="Dashboard" className="p-2 text-charcoal/60 hover:text-gold active:scale-95 active:text-gold transition-colors hover:bg-beige/10 rounded-full">
                             <LayoutDashboard size={18} />
                         </Link>
-                        <Link href="/admin/products" title="Produits" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                        <Link href="/admin/products" title="Produits" className="p-2 text-charcoal/60 hover:text-gold active:scale-95 active:text-gold transition-colors hover:bg-beige/10 rounded-full">
                             <ShoppingBag size={18} />
                         </Link>
-                        <Link href="/admin/orders" title="Commandes" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                        <Link href="/admin/orders" title="Commandes" className="p-2 text-charcoal/60 hover:text-gold active:scale-95 active:text-gold transition-colors hover:bg-beige/10 rounded-full">
                             <Package size={18} />
                         </Link>
-                        <Link href="/admin/users" title="Clients" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                        <Link href="/admin/users" title="Clients" className="p-2 text-charcoal/60 hover:text-gold active:scale-95 active:text-gold transition-colors hover:bg-beige/10 rounded-full">
                             <Users size={18} />
                         </Link>
-                        <Link href="/admin/reviews" title="Avis" className="p-2 text-charcoal/60 hover:text-gold transition-colors hover:bg-beige/10 rounded-full">
+                        <Link href="/admin/reviews" title="Avis" className="p-2 text-charcoal/60 hover:text-gold active:scale-95 active:text-gold transition-colors hover:bg-beige/10 rounded-full">
                             <Star size={18} />
                         </Link>
                     </div>
@@ -55,7 +55,7 @@ export const Navbar = async () => {
                     <Link
                         key={cat}
                         href={`/shop/${cat.toLowerCase()}`}
-                        className="text-xs uppercase tracking-widest hover:text-gold transition-luxury relative group py-2"
+                        className="text-xs uppercase tracking-widest hover:text-gold active:text-gold active:scale-95 transition-luxury relative group py-2"
                     >
                         {cat}
                         <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-gold transition-luxury group-hover:w-full" />
@@ -68,7 +68,7 @@ export const Navbar = async () => {
                     <Link
                         href="https://www.tiktok.com/@florelle.maroc"
                         target="_blank"
-                        className="text-charcoal hover:text-gold hover:scale-110 transition-all duration-300"
+                        className="text-charcoal hover:text-gold hover:scale-110 active:scale-95 active:text-gold transition-all duration-300"
                     >
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -77,7 +77,7 @@ export const Navbar = async () => {
                     <Link
                         href="https://www.instagram.com/florelle_maroc/"
                         target="_blank"
-                        className="text-charcoal hover:text-gold hover:scale-110 transition-all duration-300"
+                        className="text-charcoal hover:text-gold hover:scale-110 active:scale-95 active:text-gold transition-all duration-300"
                     >
                         <Instagram size={18} strokeWidth={1.5} />
                     </Link>

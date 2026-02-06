@@ -11,6 +11,54 @@ interface MobileMenuProps {
     isAdmin?: boolean;
 }
 
+// Composant MenuLink avec feedback visuel au toucher
+const MenuLink = ({
+    href,
+    onClick,
+    children,
+    className = '',
+    highlight = false
+}: {
+    href: string;
+    onClick: () => void;
+    children: React.ReactNode;
+    className?: string;
+    highlight?: boolean;
+}) => {
+    const [isPressed, setIsPressed] = useState(false);
+
+    const handleClick = () => {
+        setIsPressed(true);
+        // Le feedback visuel est géré par les états, la navigation se fait via Link
+        setTimeout(() => {
+            onClick();
+        }, 100);
+    };
+
+    const baseClasses = highlight
+        ? 'text-gold'
+        : 'text-black';
+
+    const pressedClasses = isPressed
+        ? 'text-charcoal/70 bg-charcoal/5 rounded-lg px-3 py-2 -mx-3 scale-95'
+        : '';
+
+    return (
+        <Link
+            href={href}
+            onClick={handleClick}
+            onTouchStart={() => setIsPressed(true)}
+            onTouchEnd={() => setTimeout(() => setIsPressed(false), 200)}
+            onMouseDown={() => setIsPressed(true)}
+            onMouseUp={() => setIsPressed(false)}
+            onMouseLeave={() => setIsPressed(false)}
+            className={`block transition-all duration-150 active:scale-95 active:bg-charcoal/5 active:rounded-lg ${className} ${baseClasses} ${pressedClasses}`}
+        >
+            {children}
+        </Link>
+    );
+};
+
 export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
@@ -80,7 +128,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                     <Link href="/" onClick={toggleMenu}>
                                         <img src="/logo.png" alt="Florelle" className="h-8 w-auto" />
                                     </Link>
-                                    <button onClick={toggleMenu} className="p-2 text-charcoal hover:bg-beige/10 rounded-full">
+                                    <button onClick={toggleMenu} className="p-2 text-charcoal hover:bg-beige/10 rounded-full active:bg-gold/20 active:text-gold transition-colors">
                                         <X size={24} />
                                     </button>
                                 </div>
@@ -90,41 +138,42 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                         <div className="mb-8 p-4 bg-off-white/50 rounded-lg border border-gold/20">
                                             <p className="text-xs uppercase tracking-widest text-gold font-bold mb-4">Administration</p>
                                             <div className="space-y-4">
-                                                <Link href="/admin/dashboard" onClick={toggleMenu} className="block text-sm uppercase tracking-widest text-charcoal font-bold">
+                                                <MenuLink href="/admin/dashboard" onClick={toggleMenu} className="text-sm uppercase tracking-widest font-bold">
                                                     Dashboard
-                                                </Link>
-                                                <Link href="/admin/products" onClick={toggleMenu} className="block text-sm uppercase tracking-widest text-charcoal font-bold">
+                                                </MenuLink>
+                                                <MenuLink href="/admin/products" onClick={toggleMenu} className="text-sm uppercase tracking-widest font-bold">
                                                     Produits
-                                                </Link>
-                                                <Link href="/admin/orders" onClick={toggleMenu} className="block text-sm uppercase tracking-widest text-charcoal font-bold">
+                                                </MenuLink>
+                                                <MenuLink href="/admin/orders" onClick={toggleMenu} className="text-sm uppercase tracking-widest font-bold">
                                                     Commandes
-                                                </Link>
-                                                <Link href="/admin/users" onClick={toggleMenu} className="block text-sm uppercase tracking-widest text-charcoal font-bold">
+                                                </MenuLink>
+                                                <MenuLink href="/admin/users" onClick={toggleMenu} className="text-sm uppercase tracking-widest font-bold">
                                                     Utilisateurs
-                                                </Link>
+                                                </MenuLink>
                                             </div>
                                         </div>
                                     )}
 
                                     {links.map((link) => (
-                                        <Link
+                                        <MenuLink
                                             key={link.href}
                                             href={link.href}
                                             onClick={toggleMenu}
-                                            className={`block text-xl uppercase tracking-widest font-serif ${link.highlight ? 'text-gold' : 'text-black'}`}
+                                            highlight={link.highlight}
+                                            className="text-xl uppercase tracking-widest font-serif"
                                         >
                                             {link.label}
-                                        </Link>
+                                        </MenuLink>
                                     ))}
 
                                     <div className="w-12 h-[1px] bg-charcoal/10 my-8" />
 
-                                    <Link href="/profile" onClick={toggleMenu} className="block text-sm uppercase tracking-widest text-black/60">
+                                    <MenuLink href="/profile" onClick={toggleMenu} className="text-sm uppercase tracking-widest opacity-60">
                                         Mon Compte
-                                    </Link>
-                                    <Link href="/contact" onClick={toggleMenu} className="block text-sm uppercase tracking-widest text-black/60">
+                                    </MenuLink>
+                                    <MenuLink href="/contact" onClick={toggleMenu} className="text-sm uppercase tracking-widest opacity-60">
                                         Contact
-                                    </Link>
+                                    </MenuLink>
                                 </nav>
 
                                 <div className="p-6 border-t border-beige/20 bg-white">
@@ -132,7 +181,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                         <Link
                                             href="https://www.tiktok.com/@florelle.maroc"
                                             target="_blank"
-                                            className="bg-off-white p-2 rounded-full hover:bg-gold hover:text-white transition-all duration-300 border border-beige/20"
+                                            className="bg-off-white p-2 rounded-full hover:bg-gold hover:text-white active:bg-gold active:text-white active:scale-95 transition-all duration-150 border border-beige/20"
                                         >
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                                 <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
@@ -141,7 +190,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                         <Link
                                             href="https://www.instagram.com/florelle_maroc/"
                                             target="_blank"
-                                            className="bg-off-white p-2 rounded-full hover:bg-gold hover:text-white transition-all duration-300 border border-beige/20"
+                                            className="bg-off-white p-2 rounded-full hover:bg-gold hover:text-white active:bg-gold active:text-white active:scale-95 transition-all duration-150 border border-beige/20"
                                         >
                                             <Instagram size={20} strokeWidth={1.5} />
                                         </Link>
@@ -159,3 +208,4 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
         </div>
     );
 };
+

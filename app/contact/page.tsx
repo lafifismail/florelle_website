@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { Button } from '@/components/ui/Button';
-import { MapPin, Mail, Phone, Instagram } from 'lucide-react';
+import { MapPin, Mail, Instagram } from 'lucide-react';
 import Link from 'next/link';
 import MapLoader from '@/components/contact/MapLoader';
+import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata = {
     title: 'Contact | Florelle',
@@ -35,49 +35,7 @@ export default function ContactPage() {
                             </p>
                         </div>
 
-                        <form className="space-y-8">
-                            <div className="space-y-6">
-                                <div className="group">
-                                    <input
-                                        type="text"
-                                        placeholder="Nom & Prénom *"
-                                        className="w-full bg-transparent border-b border-gray-300 py-3 text-charcoal placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
-                                        required
-                                        suppressHydrationWarning
-                                    />
-                                </div>
-                                <div className="group">
-                                    <input
-                                        type="email"
-                                        placeholder="Email *"
-                                        className="w-full bg-transparent border-b border-gray-300 py-3 text-charcoal placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
-                                        required
-                                        suppressHydrationWarning
-                                    />
-                                </div>
-                                <div className="group">
-                                    <input
-                                        type="text"
-                                        placeholder="Objet"
-                                        className="w-full bg-transparent border-b border-gray-300 py-3 text-charcoal placeholder-gray-400 focus:border-black focus:outline-none transition-colors"
-                                        suppressHydrationWarning
-                                    />
-                                </div>
-                                <div className="group">
-                                    <textarea
-                                        placeholder="Votre message..."
-                                        rows={5}
-                                        className="w-full bg-transparent border-b border-gray-300 py-3 text-charcoal placeholder-gray-400 focus:border-black focus:outline-none transition-colors resize-none"
-                                        required
-                                        suppressHydrationWarning
-                                    ></textarea>
-                                </div>
-                            </div>
-
-                            <button type="submit" className="bg-black text-white px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#E30039] transition-colors duration-300">
-                                Envoyer le message
-                            </button>
-                        </form>
+                        <ContactForm />
                     </div>
 
                     {/* Right Column: Info */}
