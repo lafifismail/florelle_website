@@ -19,6 +19,7 @@ export async function sendVerificationEmail(email: string, code: string) {
             from: process.env.SMTP_FROM,
             to: email,
             subject: 'Vérifiez votre compte - Florelle Beauty',
+            text: `Bienvenue chez Florelle.\n\nMerci de vous être inscrit. Votre code de vérification est : ${code}\n\nCe code expire dans 15 minutes.`,
             html: `
                 <div style="font-family: Arial, sans-serif; color: #333;">
                     <h1>Bienvenue chez Florelle</h1>
