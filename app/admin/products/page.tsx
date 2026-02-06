@@ -130,17 +130,39 @@ export default async function AdminProductsPage({
                                     <tr key={product.id} className="group hover:bg-off-white/50 transition-colors">
                                         <td className="p-4">
                                             <div className="h-12 w-12 rounded bg-gray-100 border border-beige/20 overflow-hidden flex items-center justify-center">
-                                                {product.images && Array.isArray(product.images) && product.images.length > 0 ? (
-                                                    <Image
-                                                        src={product.images[0] as string}
-                                                        alt={product.name}
-                                                        width={48}
-                                                        height={48}
-                                                        className="object-cover w-full h-full"
-                                                    />
-                                                ) : (
-                                                    <span className="text-xs text-gray-400">N/A</span>
-                                                )}
+                                                {(() => {
+                                                    let imageUrl = "/images/placeholder.jpg";
+                                                    let hasImage = false;
+
+                                                    try {
+                                                        const imgs = product.images;
+                                                        if (Array.isArray(imgs) && imgs.length > 0) {
+                                                            imageUrl = imgs[0] as string;
+                                                            hasImage = true;
+                                                        } else if (typeof imgs === 'string') {
+                                                            // Handle case where Prisma returns stringified JSON
+                                                            const parsed = JSON.parse(imgs);
+                                                            if (Array.isArray(parsed) && parsed.length > 0) {
+                                                                imageUrl = parsed[0];
+                                                                hasImage = true;
+                                                            }
+                                                        }
+                                                    } catch (e) {
+                                                        console.error("Error parsing images for product", product.id, e);
+                                                    }
+
+                                                    return hasImage ? (
+                                                        <Image
+                                                            src={imageUrl}
+                                                            alt={product.name}
+                                                            width={48}
+                                                            height={48}
+                                                            className="object-cover w-full h-full"
+                                                        />
+                                                    ) : (
+                                                        <span className="text-xs text-gray-400">N/A</span>
+                                                    );
+                                                })()}
                                             </div>
                                         </td>
                                         <td className="p-4 font-medium text-charcoal">{product.name}</td>
