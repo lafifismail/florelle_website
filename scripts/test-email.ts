@@ -7,9 +7,12 @@ console.log(`Host: ${process.env.SMTP_HOST}`);
 console.log(`User: ${process.env.SMTP_USER}`);
 
 const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: '138.201.165.90', // Using direct IP to bypass DNS propagation
     port: Number(process.env.SMTP_PORT),
     secure: false,
+    tls: {
+        rejectUnauthorized: false // Allow self-signed certs if IP doesn't match cert name
+    },
     auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
