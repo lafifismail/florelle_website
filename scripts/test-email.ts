@@ -1,0 +1,36 @@
+import nodemailer from 'nodemailer';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+console.log('📧 Testing SMTP Configuration...');
+console.log(`Host: ${process.env.SMTP_HOST}`);
+console.log(`User: ${process.env.SMTP_USER}`);
+
+const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
+    secure: false,
+    auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+    },
+});
+
+async function main() {
+    try {
+        const info = await transporter.sendMail({
+            from: process.env.SMTP_FROM,
+            to: process.env.SMTP_USER, // Send to self to test
+            subject: 'Test SMTP Florelle',
+            text: 'Ceci est un email de test pour vérifier la configuration SMTP.',
+            html: '<b>Ceci est un email de test pour vérifier la configuration SMTP.</b>',
+        });
+
+        console.log('✅ Email sent successfully!');
+        console.log('Message ID:', info.messageId);
+    } catch (error) {
+        console.error('❌ Error sending email:', error);
+    }
+}
+
+main();
