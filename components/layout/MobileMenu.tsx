@@ -99,7 +99,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
 
     return (
         <div className="md:hidden">
-            <button onClick={toggleMenu} className="p-2 text-charcoal">
+            <button onClick={toggleMenu} aria-label="Ouvrir le menu" className="p-2 text-charcoal">
                 <Menu size={24} />
             </button>
 
@@ -128,7 +128,11 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                     <Link href="/" onClick={toggleMenu}>
                                         <img src="/logo.png" alt="Florelle" className="h-8 w-auto" />
                                     </Link>
-                                    <button onClick={toggleMenu} className="p-2 text-charcoal hover:bg-beige/10 rounded-full active:bg-gold/20 active:text-gold transition-colors">
+                                    <button
+                                        onClick={toggleMenu}
+                                        aria-label="Fermer le menu"
+                                        className="p-2 text-charcoal hover:bg-beige/10 rounded-full active:bg-gold/20 active:text-gold transition-colors"
+                                    >
                                         <X size={24} />
                                     </button>
                                 </div>
@@ -181,6 +185,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                         <Link
                                             href="https://www.tiktok.com/@florelle.maroc"
                                             target="_blank"
+                                            rel="noopener noreferrer"
                                             className="bg-off-white p-2 rounded-full hover:bg-gold hover:text-white active:bg-gold active:text-white active:scale-95 transition-all duration-150 border border-beige/20"
                                         >
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -190,6 +195,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
                                         <Link
                                             href="https://www.instagram.com/florelle_maroc/"
                                             target="_blank"
+                                            rel="noopener noreferrer"
                                             className="bg-off-white p-2 rounded-full hover:bg-gold hover:text-white active:bg-gold active:text-white active:scale-95 transition-all duration-150 border border-beige/20"
                                         >
                                             <Instagram size={20} strokeWidth={1.5} />

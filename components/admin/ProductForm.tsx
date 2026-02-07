@@ -6,10 +6,22 @@ import { upsertProduct } from '@/lib/actions/product';
 import { Button } from '@/components/ui/Button';
 import Image from 'next/image';
 import { Upload, X } from 'lucide-react';
+interface Product {
+    id: string;
+    name: string;
+    description?: string;
+    price: number | string;
+    salePrice?: number | string;
+    stock: number;
+    images: string[] | string;
+    categoryId: string;
+    subcategory?: string;
+    isFeatured: boolean;
+}
 
 interface ProductFormProps {
-    initialData?: any;
-    categories: { id: string; name: string }[];
+    readonly initialData?: Partial<Product>;
+    readonly categories: { readonly id: string; readonly name: string }[];
 }
 
 export default function ProductForm({ initialData, categories }: ProductFormProps) {
@@ -199,7 +211,7 @@ export default function ProductForm({ initialData, categories }: ProductFormProp
                                 type="number"
                                 min="0"
                                 value={formData.stock}
-                                onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
+                                onChange={(e) => setFormData({ ...formData, stock: Number.parseInt(e.target.value, 10) || 0 })}
                                 className="w-full border-b border-beige/40 py-2 focus:border-gold outline-none bg-transparent transition-colors"
                             />
                         </div>

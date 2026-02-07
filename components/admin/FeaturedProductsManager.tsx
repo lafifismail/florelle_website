@@ -6,27 +6,27 @@ import { Sparkles, Plus, X, ChevronLeft, ChevronRight, Search } from 'lucide-rea
 import Image from 'next/image';
 
 interface Product {
-    id: string;
-    name: string;
-    price: number;
-    images: string[] | string;
-    isFeatured: boolean;
-    category?: { id: string; name: string };
-    subcategory?: string;
+    readonly id: string;
+    readonly name: string;
+    readonly price: number;
+    readonly images: string[] | string;
+    readonly isFeatured: boolean;
+    readonly category?: { readonly id: string; readonly name: string };
+    readonly subcategory?: string;
 }
 
 interface Category {
-    id: string;
-    name: string;
+    readonly id: string;
+    readonly name: string;
 }
 
 interface FeaturedProductsManagerProps {
-    initialFeatured: Product[];
-    allProducts: Product[];
-    categories: Category[];
+    readonly initialFeatured: Product[];
+    readonly allProducts: Product[];
+    readonly categories: Category[];
 }
 
-export function FeaturedProductsManager({ initialFeatured, allProducts, categories }: FeaturedProductsManagerProps) {
+export function FeaturedProductsManager({ initialFeatured, allProducts, categories }: Readonly<FeaturedProductsManagerProps>) {
     const [isOpen, setIsOpen] = useState(false);
     const [isPressed, setIsPressed] = useState(false);
     const [activeTab, setActiveTab] = useState<'selected' | 'add'>('selected');
