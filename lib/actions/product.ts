@@ -5,8 +5,8 @@ import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-// Helper to slugify
 const slugify = (text: string) => {
+    if (!text) return '';
     return text.toString().toLowerCase()
         .replace(/\s+/g, '-')           // Replace spaces with -
         .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
@@ -30,7 +30,7 @@ export async function upsertProduct(data: {
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.email) {
-        throw new Error("Non autorisé");
+        return { error: "Non autorisé" };
     }
 
     // Double check admin role
@@ -40,7 +40,7 @@ export async function upsertProduct(data: {
     });
 
     if (user?.role !== 'ADMIN') {
-        throw new Error("Accès refusé");
+        return { error: "Accès refusé" };
     }
 
     const price = parseFloat(data.price.toString());
@@ -96,9 +96,9 @@ export async function upsertProduct(data: {
         revalidatePath('/shop');
         revalidatePath('/shop/[category]', 'page');
         return { success: true };
-    } catch (error) {
+    } catch (error: any) {
         console.error("Upsert Product Error:", error);
-        throw new Error("Erreur lors de l'enregistrement");
+        return { error: error.message || "Erreur lors de l'enregistrement" };
     }
 }
 

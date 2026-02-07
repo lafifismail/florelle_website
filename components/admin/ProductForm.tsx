@@ -101,7 +101,8 @@ export default function ProductForm({ initialData, categories }: ProductFormProp
                 });
 
                 if (!uploadResponse.ok) {
-                    throw new Error('Upload failed');
+                    const error = await uploadResponse.json();
+                    throw new Error(error.error || 'Upload failed');
                 }
 
                 const { urls } = await uploadResponse.json();
@@ -117,17 +118,21 @@ export default function ProductForm({ initialData, categories }: ProductFormProp
                 return;
             }
 
-            await upsertProduct({
+            const result = await upsertProduct({
                 ...formData,
                 images: allImages,
                 id: initialData?.id
             });
 
+            if (result && (result as any).error) { // Handle potential error structure if we change backend later
+                throw new Error((result as any).error);
+            }
+
             router.push('/admin/products');
             router.refresh();
-        } catch (error) {
+        } catch (error: any) {
             console.error(error);
-            alert("Erreur lors de l'enregistrement");
+            alert(error.message || "Erreur lors de l'enregistrement");
         } finally {
             setLoading(false);
         }
