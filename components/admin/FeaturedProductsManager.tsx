@@ -2,31 +2,31 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { Sparkles, Plus, X, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { Sparkles, Plus, X, ChevronLeft, ChevronRight, Filter, Search } from 'lucide-react';
 import Image from 'next/image';
 
 interface Product {
-    readonly id: string;
-    readonly name: string;
-    readonly price: number;
-    readonly images: string[] | string;
-    readonly isFeatured: boolean;
-    readonly category?: { readonly id: string; readonly name: string };
-    readonly subcategory?: string;
+    id: string;
+    name: string;
+    price: number;
+    images: any;
+    isFeatured: boolean;
+    category?: { id: string; name: string };
+    subcategory?: string;
 }
 
 interface Category {
-    readonly id: string;
-    readonly name: string;
+    id: string;
+    name: string;
 }
 
 interface FeaturedProductsManagerProps {
-    readonly initialFeatured: Product[];
-    readonly allProducts: Product[];
-    readonly categories: Category[];
+    initialFeatured: Product[];
+    allProducts: Product[];
+    categories: Category[];
 }
 
-export function FeaturedProductsManager({ initialFeatured, allProducts, categories }: Readonly<FeaturedProductsManagerProps>) {
+export function FeaturedProductsManager({ initialFeatured, allProducts, categories }: FeaturedProductsManagerProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [isPressed, setIsPressed] = useState(false);
     const [activeTab, setActiveTab] = useState<'selected' | 'add'>('selected');
@@ -63,16 +63,15 @@ export function FeaturedProductsManager({ initialFeatured, allProducts, categori
         };
     }, [isOpen]);
 
-    const getImageUrl = (images: string[] | string): string => {
+    const getImageUrl = (images: any): string => {
         try {
-            let data = images;
-            while (typeof data === 'string' && (data.startsWith('[') || data.startsWith('"'))) {
-                data = JSON.parse(data);
+            if (Array.isArray(images) && images.length > 0) return images[0];
+            if (typeof images === 'string') {
+                const parsed = JSON.parse(images);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed[0];
             }
-            if (Array.isArray(data) && data.length > 0) return data[0];
-            if (typeof data === 'string' && data.length > 0) return data;
         } catch { }
-        return '/images/placeholder-product.jpg';
+        return '/images/placeholder.jpg';
     };
 
     // Get unique subcategories based on selected category

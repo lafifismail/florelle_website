@@ -5,7 +5,7 @@ import { updatePromoBanner, togglePromoVisibility, updateUniverseBanner } from '
 import { Upload, Save, Loader2, Check } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-export default function PromoSettings({ initialSettings }: Readonly<{ initialSettings: any }>) {
+export default function PromoSettings({ initialSettings }: { initialSettings: any }) {
     const [isVisible, setIsVisible] = useState<boolean>(!!initialSettings?.promoBannerVisible);
     const [imageUrl, setImageUrl] = useState<string>(initialSettings?.promoBannerImageUrl ?? '');
     const [loading, setLoading] = useState(false);
@@ -80,8 +80,7 @@ export default function PromoSettings({ initialSettings }: Readonly<{ initialSet
             await updateUniverseBanner(universe, banners[universe]);
             router.refresh();
             // Optional: better feedback than alert
-        } catch (error) {
-            console.error('Error saving universe banner:', error);
+        } catch (e) {
             alert('Erreur lors de la sauvegarde');
         } finally {
             setSaving(null);
@@ -109,23 +108,17 @@ export default function PromoSettings({ initialSettings }: Readonly<{ initialSet
                                 : 'bg-green-50 text-green-500 hover:bg-green-100'
                                 }`}
                         >
-                            {loading ? (
-                                <Loader2 size={10} className="animate-spin" />
-                            ) : (
-                                isVisible ? 'Désactiver' : 'Activer'
-                            )}
+                            {loading ? <Loader2 size={10} className="animate-spin" /> : (isVisible ? 'Désactiver' : 'Activer')}
                         </button>
                     </div>
                 </div>
 
                 <div className="space-y-4">
                     <div className="space-y-2">
-                        <label htmlFor="promo-banner-url" className="text-[10px] uppercase tracking-widest font-bold opacity-50 block">Image de la bannière</label>
+                        <label className="text-[10px] uppercase tracking-widest font-bold opacity-50 block">Image de la bannière</label>
                         <div className="flex gap-2">
                             <div className="flex-grow relative">
                                 <input
-                                    id="promo-banner-url"
-                                    suppressHydrationWarning
                                     type="text"
                                     value={imageUrl}
                                     onChange={(e) => setImageUrl(e.target.value)}
@@ -136,7 +129,6 @@ export default function PromoSettings({ initialSettings }: Readonly<{ initialSet
                                     <div className="relative group cursor-pointer">
                                         <Upload size={14} className="text-charcoal/40 group-hover:text-gold transition-colors" />
                                         <input
-                                            suppressHydrationWarning
                                             type="file"
                                             accept="image/*"
                                             onChange={(e) => handleFileUpload(e, 'promo')}
@@ -199,7 +191,6 @@ export default function PromoSettings({ initialSettings }: Readonly<{ initialSet
                                 <div className="flex gap-2">
                                     <div className="flex-grow relative">
                                         <input
-                                            suppressHydrationWarning
                                             type="text"
                                             value={banners[universe]}
                                             onChange={(e) => setBanners(prev => ({ ...prev, [universe]: e.target.value }))}
@@ -215,7 +206,6 @@ export default function PromoSettings({ initialSettings }: Readonly<{ initialSet
                                                 <Upload size={12} className="text-charcoal/40" />
                                             )}
                                             <input
-                                                suppressHydrationWarning
                                                 type="file"
                                                 accept="image/*"
                                                 onChange={(e) => handleFileUpload(e, universe)}

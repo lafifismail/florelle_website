@@ -84,7 +84,6 @@ export const Footer = async () => {
                             <Link
                                 href="https://www.tiktok.com/@florelle.maroc"
                                 target="_blank"
-                                rel="noopener noreferrer"
                                 className="bg-off-white/10 p-2 rounded-full hover:bg-gold hover:text-white active:bg-gold active:text-white active:scale-95 transition-all duration-150 group"
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-off-white group-hover:text-white">
@@ -94,7 +93,6 @@ export const Footer = async () => {
                             <Link
                                 href="https://www.instagram.com/florelle_maroc/"
                                 target="_blank"
-                                rel="noopener noreferrer"
                                 className="bg-off-white/10 p-2 rounded-full hover:bg-gold hover:text-white active:bg-gold active:text-white active:scale-95 transition-all duration-150 group"
                             >
                                 <Instagram size={20} strokeWidth={1.5} className="text-off-white group-hover:text-white" />

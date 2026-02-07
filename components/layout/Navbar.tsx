@@ -8,8 +8,6 @@ import { User, Instagram, LayoutDashboard, ShoppingBag, Package, Users, Star } f
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { MobileMenu } from '@/components/layout/MobileMenu';
-import { Suspense } from 'react';
-import { Search } from 'lucide-react';
 
 export const Navbar = async () => {
     const structure = getShopStructure();
@@ -70,7 +68,6 @@ export const Navbar = async () => {
                     <Link
                         href="https://www.tiktok.com/@florelle.maroc"
                         target="_blank"
-                        rel="noopener noreferrer"
                         className="text-charcoal hover:text-gold hover:scale-110 active:scale-95 active:text-gold transition-all duration-300"
                     >
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -80,20 +77,13 @@ export const Navbar = async () => {
                     <Link
                         href="https://www.instagram.com/florelle_maroc/"
                         target="_blank"
-                        rel="noopener noreferrer"
                         className="text-charcoal hover:text-gold hover:scale-110 active:scale-95 active:text-gold transition-all duration-300"
                     >
                         <Instagram size={18} strokeWidth={1.5} />
                     </Link>
                 </div>
 
-                <Suspense fallback={
-                    <div className="p-2 text-charcoal/80">
-                        <Search size={18} strokeWidth={1.5} />
-                    </div>
-                }>
-                    <SearchBar />
-                </Suspense>
+                <SearchBar />
                 <UserNav />
                 <CartButton />
             </div>
