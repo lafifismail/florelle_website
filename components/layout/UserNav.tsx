@@ -14,9 +14,13 @@ export const UserNav = () => {
         setMounted(true);
     }, []);
 
+    // Stable values for hydration first-pass
+    const safeHref = mounted && session ? "/profile" : "/login";
+    const userFill = mounted && session ? "currentColor" : "none";
+
     return (
         <Link
-            href={session ? "/profile" : "/login"}
+            href={safeHref}
             onTouchStart={() => setIsPressed(true)}
             onTouchEnd={() => setTimeout(() => setIsPressed(false), 200)}
             onMouseDown={() => setIsPressed(true)}
@@ -37,11 +41,12 @@ export const UserNav = () => {
                 strokeWidth={1.5}
                 className={`transition-colors duration-150 ${isPressed
                     ? 'text-white'
-                    : session
+                    : mounted && session
                         ? 'text-charcoal group-hover:text-gold'
                         : 'text-charcoal/80 group-hover:text-gold'
                     }`}
-                fill={mounted && session ? "currentColor" : "none"}
+                fill={userFill}
+                suppressHydrationWarning
             />
             {mounted && session && (
                 <span className={`
