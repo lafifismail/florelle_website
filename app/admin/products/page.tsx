@@ -7,6 +7,7 @@ import { Pagination } from "@/components/admin/Pagination";
 import SearchInput from "@/components/admin/SearchInput";
 import { CategoryFilter } from "@/components/admin/CategoryFilter";
 import DeleteProductButton from "@/components/admin/DeleteProductButton";
+import { SortableHeader } from "@/components/admin/SortableHeader";
 
 // On force le rendu dynamique pour que la recherche se mette à jour instantanément
 export const dynamic = 'force-dynamic';
@@ -23,6 +24,8 @@ export default async function AdminProductsPage({
     const filter = typeof resolvedSearchParams.filter === 'string' ? resolvedSearchParams.filter : '';
     const search = typeof resolvedSearchParams.query === 'string' ? resolvedSearchParams.query : '';
     const category = typeof resolvedSearchParams.category === 'string' ? resolvedSearchParams.category : '';
+    const sort = typeof resolvedSearchParams.sort === 'string' ? resolvedSearchParams.sort : '';
+    const order = typeof resolvedSearchParams.order === 'string' ? resolvedSearchParams.order : 'asc';
 
     const limit = 10;
     const skip = (page - 1) * limit;
@@ -49,13 +52,23 @@ export default async function AdminProductsPage({
         };
     }
 
+    // Build orderBy based on sort params
+    let orderBy: any = { createdAt: 'desc' }; // Default
+    if (sort === 'name') {
+        orderBy = { name: order };
+    } else if (sort === 'price') {
+        orderBy = { price: order };
+    } else if (sort === 'stock') {
+        orderBy = { stock: order };
+    }
+
     // Récupération des données (Produits + Total pour pagination)
     const [products, total] = await Promise.all([
         prisma.product.findMany({
             where,
             skip,
             take: limit,
-            orderBy: { createdAt: 'desc' },
+            orderBy,
             include: { category: true }
         }),
         prisma.product.count({ where }),
@@ -110,10 +123,10 @@ export default async function AdminProductsPage({
                         <thead className="bg-off-white border-b border-beige/20 text-charcoal/60 uppercase tracking-widest text-[10px]">
                             <tr>
                                 <th className="p-4 font-normal">Image</th>
-                                <th className="p-4 font-normal">Nom</th>
+                                <SortableHeader column="name" label="Nom" />
                                 <th className="p-4 font-normal">Catégorie</th>
-                                <th className="p-4 font-normal">Prix</th>
-                                <th className="p-4 font-normal">Stock</th>
+                                <SortableHeader column="price" label="Prix" />
+                                <SortableHeader column="stock" label="Stock" />
                                 <th className="p-4 font-normal text-right">Actions</th>
                             </tr>
                         </thead>

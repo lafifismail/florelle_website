@@ -3,7 +3,6 @@
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { Button } from '@/components/ui/Button';
 
 export function Pagination({ totalPages }: { totalPages: number }) {
     const pathname = usePathname();
@@ -18,17 +17,33 @@ export function Pagination({ totalPages }: { totalPages: number }) {
 
     if (totalPages <= 1) return null;
 
-    // Use Button styles but render Link manually if active
+    // Calculate the range of pages to display (max 5)
+    const maxVisible = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisible / 2));
+    let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+
+    // Adjust start if we're near the end
+    if (endPage - startPage + 1 < maxVisible) {
+        startPage = Math.max(1, endPage - maxVisible + 1);
+    }
+
+    const pageNumbers: number[] = [];
+    for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+    }
+
     const buttonClass = "h-8 w-8 p-0 flex items-center justify-center rounded-sm transition-colors text-sm";
     const activeClass = "bg-gold text-white hover:bg-gold-dark shadow-luxury";
+    const inactiveClass = "border border-charcoal/20 text-charcoal hover:bg-off-white";
     const disabledClass = "border border-charcoal/20 text-charcoal/40 cursor-not-allowed";
 
     return (
-        <div className="flex items-center justify-end gap-2 mt-4">
+        <div className="flex items-center justify-center gap-1 mt-4">
+            {/* Previous Arrow */}
             {currentPage > 1 ? (
                 <Link
                     href={createPageURL(currentPage - 1)}
-                    className={`${buttonClass} ${activeClass}`}
+                    className={`${buttonClass} ${inactiveClass}`}
                 >
                     <ArrowLeft className="h-4 w-4" />
                 </Link>
@@ -38,14 +53,22 @@ export function Pagination({ totalPages }: { totalPages: number }) {
                 </div>
             )}
 
-            <div className="text-xs text-charcoal/60 uppercase tracking-widest font-medium px-2">
-                Page {currentPage} sur {totalPages}
-            </div>
+            {/* Page Number Squares */}
+            {pageNumbers.map((pageNum) => (
+                <Link
+                    key={pageNum}
+                    href={createPageURL(pageNum)}
+                    className={`${buttonClass} ${pageNum === currentPage ? activeClass : inactiveClass}`}
+                >
+                    {pageNum}
+                </Link>
+            ))}
 
+            {/* Next Arrow */}
             {currentPage < totalPages ? (
                 <Link
                     href={createPageURL(currentPage + 1)}
-                    className={`${buttonClass} ${activeClass}`}
+                    className={`${buttonClass} ${inactiveClass}`}
                 >
                     <ArrowRight className="h-4 w-4" />
                 </Link>

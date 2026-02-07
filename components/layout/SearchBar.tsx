@@ -61,8 +61,11 @@ export const SearchBar = () => {
 
     if (!mounted) {
         return (
-            <div className="relative flex items-center">
-                <button className="p-2 text-charcoal relative">
+            <div ref={containerRef} className="relative flex items-center">
+                <button
+                    className="p-2 rounded-full transition-all duration-150 z-20 relative text-charcoal hover:text-gold"
+                    aria-label="Rechercher"
+                >
                     <Search size={20} strokeWidth={1.5} />
                 </button>
             </div>
