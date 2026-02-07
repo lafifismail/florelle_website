@@ -9,7 +9,7 @@ interface Product {
     id: string;
     name: string;
     price: number;
-    images: any;
+    images: string[] | string;
     isFeatured: boolean;
     category?: { id: string; name: string };
     subcategory?: string;
@@ -63,7 +63,7 @@ export function FeaturedProductsManager({ initialFeatured, allProducts, categori
         };
     }, [isOpen]);
 
-    const getImageUrl = (images: any): string => {
+    const getImageUrl = (images: string[] | string): string => {
         try {
             if (Array.isArray(images) && images.length > 0) return images[0];
             if (typeof images === 'string') {
