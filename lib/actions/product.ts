@@ -59,9 +59,9 @@ export async function upsertProduct(data: {
                     salePrice,
                     stock,
                     categoryId: data.categoryId,
-                    subcategory: data.subcategory as any || null,
+                    subcategory: data.subcategory || null,
                     isFeatured: data.isFeatured || false,
-                    images: data.images as any, // Store array directly as Json
+                    images: JSON.stringify(data.images), // Serialize array to JSON string
                 }
             });
         } else {
@@ -83,9 +83,9 @@ export async function upsertProduct(data: {
                     salePrice,
                     stock,
                     categoryId: data.categoryId,
-                    subcategory: data.subcategory as any || null,
+                    subcategory: data.subcategory || null,
                     isFeatured: data.isFeatured || false,
-                    images: data.images as any // Store array directly as Json
+                    images: JSON.stringify(data.images) // Serialize array to JSON string
                 }
             });
         }
