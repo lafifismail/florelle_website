@@ -62,12 +62,14 @@ export const SearchBar = () => {
     if (!mounted) {
         return (
             <div ref={containerRef} className="relative flex items-center">
+                {/* Skeleton matching the structure of the default state */}
                 <button
                     className="p-2 rounded-full transition-all duration-150 z-20 relative text-charcoal hover:text-gold"
                     aria-label="Rechercher"
                 >
                     <Search size={20} strokeWidth={1.5} />
                 </button>
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-0 w-0 opacity-0 overflow-hidden pointer-events-none" />
             </div>
         );
     }

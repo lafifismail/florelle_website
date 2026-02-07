@@ -119,6 +119,7 @@ export default function PromoSettings({ initialSettings }: { initialSettings: an
                         <div className="flex gap-2">
                             <div className="flex-grow relative">
                                 <input
+                                    suppressHydrationWarning
                                     type="text"
                                     value={imageUrl}
                                     onChange={(e) => setImageUrl(e.target.value)}
@@ -129,6 +130,7 @@ export default function PromoSettings({ initialSettings }: { initialSettings: an
                                     <div className="relative group cursor-pointer">
                                         <Upload size={14} className="text-charcoal/40 group-hover:text-gold transition-colors" />
                                         <input
+                                            suppressHydrationWarning
                                             type="file"
                                             accept="image/*"
                                             onChange={(e) => handleFileUpload(e, 'promo')}
@@ -191,6 +193,7 @@ export default function PromoSettings({ initialSettings }: { initialSettings: an
                                 <div className="flex gap-2">
                                     <div className="flex-grow relative">
                                         <input
+                                            suppressHydrationWarning
                                             type="text"
                                             value={banners[universe]}
                                             onChange={(e) => setBanners(prev => ({ ...prev, [universe]: e.target.value }))}
@@ -206,6 +209,7 @@ export default function PromoSettings({ initialSettings }: { initialSettings: an
                                                 <Upload size={12} className="text-charcoal/40" />
                                             )}
                                             <input
+                                                suppressHydrationWarning
                                                 type="file"
                                                 accept="image/*"
                                                 onChange={(e) => handleFileUpload(e, universe)}
@@ -220,8 +224,8 @@ export default function PromoSettings({ initialSettings }: { initialSettings: an
                                         onClick={() => handleUniverseSave(universe)}
                                         disabled={!!saving || !!uploading}
                                         className={`px-3 rounded-sm transition-all flex items-center justify-center gap-2 min-w-[40px] ${saving === universe
-                                                ? 'bg-green-500 text-white'
-                                                : 'bg-charcoal text-white hover:bg-gold'
+                                            ? 'bg-green-500 text-white'
+                                            : 'bg-charcoal text-white hover:bg-gold'
                                             }`}
                                         title="Enregistrer"
                                     >
