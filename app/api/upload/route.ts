@@ -41,10 +41,10 @@ export async function POST(request: NextRequest) {
         }
 
         return NextResponse.json({ urls: uploadedUrls });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Upload error:', error);
         return NextResponse.json(
-            { error: 'Upload failed' },
+            { error: `Upload failed: ${error.message}` },
             { status: 500 }
         );
     }
