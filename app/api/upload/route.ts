@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import cloudinary from '@/lib/cloudinary';
 
 export async function POST(request: NextRequest) {
     try {
@@ -15,29 +13,27 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Ensure uploads directory exists
-        const uploadsDir = join(process.cwd(), 'public', 'uploads');
-        if (!existsSync(uploadsDir)) {
-            await mkdir(uploadsDir, { recursive: true });
-        }
-
         const uploadedUrls: string[] = [];
 
         for (const file of files) {
             const bytes = await file.arrayBuffer();
             const buffer = Buffer.from(bytes);
 
-            // Generate unique filename
-            const timestamp = Date.now();
-            const randomStr = Math.random().toString(36).substring(2, 8);
-            const ext = file.name.split('.').pop();
-            const filename = `${timestamp}-${randomStr}.${ext}`;
+            // Upload to Cloudinary using a stream
+            const result = await new Promise<any>((resolve, reject) => {
+                const uploadStream = cloudinary.uploader.upload_stream(
+                    {
+                        folder: 'florelle-products', // Consistent folder
+                    },
+                    (error, result) => {
+                        if (error) reject(error);
+                        else resolve(result);
+                    }
+                );
+                uploadStream.end(buffer);
+            });
 
-            const filepath = join(uploadsDir, filename);
-            await writeFile(filepath, buffer);
-
-            // Return public URL
-            uploadedUrls.push(`/uploads/${filename}`);
+            uploadedUrls.push(result.secure_url);
         }
 
         return NextResponse.json({ urls: uploadedUrls });
