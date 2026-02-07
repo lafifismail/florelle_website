@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { redirect, notFound } from "next/navigation";
@@ -81,24 +82,41 @@ export default async function OrderDetailsPage({ params }: OrderPageProps) {
                         <div className="bg-white p-6 shadow-sm rounded-sm border border-beige/10">
                             <h3 className="font-serif text-lg mb-6 pb-2 border-b border-beige/10">Articles ({order.items.length})</h3>
                             <div className="space-y-4">
-                                {order.items.map((item) => (
-                                    <div key={item.id} className="flex gap-4 items-start">
-                                        <div className="w-16 h-16 bg-gray-50 rounded border border-beige/20 flex-shrink-0 relative overflow-hidden">
-                                            {item.product.images && Array.isArray(item.product.images) && (
-                                                <img
-                                                    src={(item.product.images as string[])[0]}
+                                {order.items.map((item) => {
+                                    // Robust image parsing
+                                    let imageUrl = '/images/placeholder-product.jpg';
+                                    try {
+                                        if (Array.isArray(item.product.images) && item.product.images.length > 0) {
+                                            imageUrl = (item.product.images as string[])[0];
+                                        } else if (typeof item.product.images === 'string') {
+                                            const parsed = JSON.parse(item.product.images);
+                                            if (Array.isArray(parsed) && parsed.length > 0) {
+                                                imageUrl = parsed[0];
+                                            }
+                                        }
+                                    } catch (e) {
+                                        console.error("Error parsing product image:", e);
+                                    }
+
+                                    return (
+                                        <div key={item.id} className="flex gap-4 items-start">
+                                            <div className="w-16 h-16 bg-gray-50 rounded border border-beige/20 flex-shrink-0 relative overflow-hidden">
+                                                <Image
+                                                    src={imageUrl}
                                                     alt={item.product.name}
-                                                    className="object-contain w-full h-full p-1"
+                                                    fill
+                                                    className="object-contain p-1"
+                                                    sizes="64px"
                                                 />
-                                            )}
+                                            </div>
+                                            <div className="flex-grow">
+                                                <p className="font-medium text-charcoal text-sm">{item.product.name}</p>
+                                                <p className="text-xs text-gray-500">Qté: {item.quantity}</p>
+                                            </div>
+                                            <p className="font-medium text-charcoal text-sm">{(item.price * item.quantity).toFixed(2)} MAD</p>
                                         </div>
-                                        <div className="flex-grow">
-                                            <p className="font-medium text-charcoal text-sm">{item.product.name}</p>
-                                            <p className="text-xs text-gray-500">Qté: {item.quantity}</p>
-                                        </div>
-                                        <p className="font-medium text-charcoal text-sm">{(item.price * item.quantity).toFixed(2)} MAD</p>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
 
                             <div className="mt-8 pt-4 border-t border-beige/10 space-y-2">
