@@ -65,13 +65,14 @@ export function FeaturedProductsManager({ initialFeatured, allProducts, categori
 
     const getImageUrl = (images: string[] | string): string => {
         try {
-            if (Array.isArray(images) && images.length > 0) return images[0];
-            if (typeof images === 'string') {
-                const parsed = JSON.parse(images);
-                if (Array.isArray(parsed) && parsed.length > 0) return parsed[0];
+            let data = images;
+            while (typeof data === 'string' && (data.startsWith('[') || data.startsWith('"'))) {
+                data = JSON.parse(data);
             }
+            if (Array.isArray(data) && data.length > 0) return data[0];
+            if (typeof data === 'string' && data.length > 0) return data;
         } catch { }
-        return '/images/placeholder.jpg';
+        return '/images/placeholder-product.jpg';
     };
 
     // Get unique subcategories based on selected category

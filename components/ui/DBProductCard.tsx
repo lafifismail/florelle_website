@@ -33,19 +33,18 @@ interface DBProductCardProps {
 export const DBProductCard = ({ product }: DBProductCardProps) => {
     const [isPressed, setIsPressed] = useState(false);
 
-    // Parse images - handle both Json type (array) and legacy string format
-    let imageUrls: string[] = [];
+    // Parse images - handle Json type (array), legacy string format, and double-serialization
+    let imagesData = product.images;
     try {
-        if (Array.isArray(product.images)) {
-            // Already an array from Json type
-            imageUrls = product.images;
-        } else if (typeof product.images === 'string') {
-            // Legacy string format
-            imageUrls = JSON.parse(product.images);
+        // Keep parsing if it's a string that looks like a JSON array or a double-serialized string
+        while (typeof imagesData === 'string' && (imagesData.startsWith('[') || imagesData.startsWith('"'))) {
+            imagesData = JSON.parse(imagesData);
         }
     } catch {
-        imageUrls = [];
+        imagesData = [];
     }
+
+    const imageUrls = Array.isArray(imagesData) ? imagesData : [];
 
     // Use first image or placeholder
     const mainImage = imageUrls.length > 0 ? imageUrls[0] : '/images/placeholder-product.jpg';
@@ -83,7 +82,7 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
                     loading="lazy"
                     quality={80}
                     className={`
-                        object-contain mix-blend-multiply transition-all duration-300
+                        object-contain transition-all duration-300
                         ${isPressed ? 'scale-90' : 'group-hover:scale-110'}
                     `}
                     onError={(e) => {
