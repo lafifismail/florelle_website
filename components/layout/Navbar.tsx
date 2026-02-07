@@ -8,6 +8,8 @@ import { User, Instagram, LayoutDashboard, ShoppingBag, Package, Users, Star } f
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { MobileMenu } from '@/components/layout/MobileMenu';
+import { Suspense } from 'react';
+import { Search } from 'lucide-react';
 
 export const Navbar = async () => {
     const structure = getShopStructure();
@@ -83,7 +85,13 @@ export const Navbar = async () => {
                     </Link>
                 </div>
 
-                <SearchBar />
+                <Suspense fallback={
+                    <div className="p-2 text-charcoal/80">
+                        <Search size={18} strokeWidth={1.5} />
+                    </div>
+                }>
+                    <SearchBar />
+                </Suspense>
                 <UserNav />
                 <CartButton />
             </div>

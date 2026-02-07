@@ -59,25 +59,15 @@ export const SearchBar = () => {
         }, 150);
     };
 
-    if (!mounted) {
-        return (
-            <div ref={containerRef} className="relative flex items-center">
-                {/* Skeleton matching the structure of the default state */}
-                <button
-                    className="p-2 rounded-full transition-all duration-150 z-20 relative text-charcoal hover:text-gold"
-                    aria-label="Rechercher"
-                >
-                    <Search size={20} strokeWidth={1.5} />
-                </button>
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 h-0 w-0 opacity-0 overflow-hidden pointer-events-none" />
-            </div>
-        );
-    }
-
     return (
-        <div ref={containerRef} className="relative flex items-center">
+        <div
+            ref={containerRef}
+            className="relative flex items-center"
+            suppressHydrationWarning
+        >
             {/* Desktop & Mobile Toggle Button */}
             <button
+                suppressHydrationWarning
                 onClick={toggleSearch}
                 onTouchStart={() => setIsPressed(true)}
                 onTouchEnd={() => setTimeout(() => setIsPressed(false), 200)}
@@ -93,14 +83,15 @@ export const SearchBar = () => {
                 `}
                 aria-label="Rechercher"
             >
-                {isOpen ? <X size={20} strokeWidth={1.5} /> : <Search size={20} strokeWidth={1.5} />}
+                {mounted && isOpen ? <X size={20} strokeWidth={1.5} /> : <Search size={20} strokeWidth={1.5} />}
             </button>
 
             {/* Expandable Input Container */}
             <div
+                suppressHydrationWarning
                 className={`
                     absolute right-0 top-1/2 -translate-y-1/2 h-10 bg-white shadow-sm flex items-center overflow-hidden transition-all duration-300 ease-in-out z-10
-                    ${isOpen ? 'w-[calc(100vw-40px)] md:w-64 opacity-100 pr-10 pl-2 border border-gray-200 rounded-sm' : 'w-0 opacity-0 border-none'}
+                    ${mounted && isOpen ? 'w-[calc(100vw-40px)] md:w-64 opacity-100 pr-10 pl-2 border border-gray-200 rounded-sm' : 'w-0 opacity-0 border-none'}
                     md:right-0 md:origin-right
                     max-md:fixed max-md:top-[64px] max-md:left-0 max-md:w-full max-md:h-16 max-md:border-b max-md:border-gray-100 max-md:justify-center max-md:px-4 max-md:bg-white max-md:translate-y-0
                 `}

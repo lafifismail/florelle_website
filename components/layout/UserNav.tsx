@@ -14,14 +14,6 @@ export const UserNav = () => {
         setMounted(true);
     }, []);
 
-    if (!mounted) {
-        return (
-            <div className="p-2 relative">
-                <User size={20} strokeWidth={1.5} className="text-charcoal/80" />
-            </div>
-        );
-    }
-
     return (
         <Link
             href={session ? "/profile" : "/login"}
@@ -38,6 +30,7 @@ export const UserNav = () => {
                     : 'hover:text-gold'
                 }
             `}
+            suppressHydrationWarning
         >
             <User
                 size={20}
@@ -48,9 +41,9 @@ export const UserNav = () => {
                         ? 'text-charcoal group-hover:text-gold'
                         : 'text-charcoal/80 group-hover:text-gold'
                     }`}
-                fill={session ? "currentColor" : "none"}
+                fill={mounted && session ? "currentColor" : "none"}
             />
-            {session && (
+            {mounted && session && (
                 <span className={`
                     absolute top-2 right-1 w-1.5 h-1.5 rounded-full border transition-colors duration-150
                     ${isPressed ? 'bg-white border-charcoal' : 'bg-green-500 border-white'}
