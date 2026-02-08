@@ -51,6 +51,7 @@ async function main() {
             address: 'Siège Florelle',
             city: 'Casablanca',
             phone: '0522000000',
+            isVerified: true, // Admin can login immediately
         },
     })
     console.log(`✅ Admin user created: ${admin.email}`)
