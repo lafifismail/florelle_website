@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { parseProductImages } from '@/lib/image-utils';
 
 import StarRating from './StarRating';
 
@@ -33,22 +34,9 @@ interface DBProductCardProps {
 export const DBProductCard = ({ product }: DBProductCardProps) => {
     const [isPressed, setIsPressed] = useState(false);
 
-    // Parse images - handle both Json type (array) and legacy string format
-    let imageUrls: string[] = [];
-    try {
-        if (Array.isArray(product.images)) {
-            // Already an array from Json type
-            imageUrls = product.images;
-        } else if (typeof product.images === 'string') {
-            // Legacy string format
-            imageUrls = JSON.parse(product.images);
-        }
-    } catch {
-        imageUrls = [];
-    }
-
-    // Use first image or placeholder
-    const mainImage = imageUrls.length > 0 ? imageUrls[0] : '/images/placeholder-product.jpg';
+    // Parse images with robust utility
+    const imageUrls = parseProductImages(product.images);
+    const mainImage = imageUrls[0];
 
     // Calculate display price
     const displayPrice = product.salePrice || product.price;

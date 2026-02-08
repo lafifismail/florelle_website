@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { prisma } from '@/lib/prisma';
+import { parseProductImages } from '@/lib/image-utils';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
@@ -47,17 +48,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
         };
     }
 
-    let mainImage = '/images/placeholder-product.jpg';
-    try {
-        const images = Array.isArray(product.images)
-            ? (product.images as string[])
-            : JSON.parse(product.images as string);
-        if (Array.isArray(images) && images.length > 0) {
-            mainImage = images[0];
-        }
-    } catch {
-        mainImage = '/images/placeholder-product.jpg';
-    }
+    const images = parseProductImages(product.images);
+    const mainImage = images[0];
 
     return {
         title: product.name,
@@ -118,13 +110,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: product.name,
-        image: (() => {
-            try {
-                return Array.isArray(product.images) ? product.images : JSON.parse(product.images as string);
-            } catch {
-                return ['/images/placeholder-product.jpg'];
-            }
-        })(),
+        image: parseProductImages(product.images),
         description: product.description,
         brand: {
             '@type': 'Brand',
@@ -177,13 +163,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {/* Product Detail */}
                 <div className="max-w-7xl mx-auto px-4 pb-16">
                     <div className="grid md:grid-cols-2 gap-12">
-                        {/* Images Gallery */}
-                        <div className="md:sticky md:top-24 h-fit">
-                            <ProductGallery
-                                images={product.images}
-                                productName={product.name}
-                            />
-                        </div>
+                        <ProductGallery
+                            images={parseProductImages(product.images)}
+                            productName={product.name}
+                        />
 
                         {/* Product Info */}
                         <div className="space-y-6">
@@ -269,14 +252,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                                     name: product.name,
                                     price: product.price,
                                     salePrice: product.salePrice,
-                                    image: (() => {
-                                        try {
-                                            const imgs = Array.isArray(product.images) ? product.images : JSON.parse(product.images as string);
-                                            return imgs[0] || '/images/placeholder-product.jpg';
-                                        } catch {
-                                            return '/images/placeholder-product.jpg';
-                                        }
-                                    })(),
+                                    image: parseProductImages(product.images)[0],
                                     stock: product.stock
                                 }}
                                 categorySlug={product.category.slug}
