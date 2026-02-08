@@ -1035,12 +1035,12 @@
         "colorCode": "#C0C0C0",
         "stock": 100,
         "images": [
-          "/images/products/accessories/sharpeners/sharpreners.jpg",
-          "/images/products/accessories/sharpeners/sharpreners-2.jpg",
-          "/images/products/accessories/sharpeners/sharpreners-3.jpg"
+          "/images/products/accessories/sharpeners/sharpeners.jpg",
+          "/images/products/accessories/sharpeners/sharpeners-2.jpg",
+          "/images/products/accessories/sharpeners/sharpeners-3.jpg"
         ]
       }
     ],
-    "mainImage": "/images/products/accessories/sharpeners/sharpreners.jpg"
+    "mainImage": "/images/products/accessories/sharpeners/sharpeners.jpg"
   }
 ]
