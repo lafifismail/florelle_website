@@ -16,9 +16,18 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
         if (Array.isArray(images)) {
             imageUrls = images;
         } else if (typeof images === 'string') {
-            imageUrls = JSON.parse(images);
+            const parsed = JSON.parse(images);
+            if (Array.isArray(parsed)) {
+                imageUrls = parsed;
+            }
+        } else if (images && typeof images === 'object') {
+            // Handle Prisma Json type that might return an object
+            if (Array.isArray(images)) {
+                imageUrls = images;
+            }
         }
-    } catch {
+    } catch (error) {
+        console.error('Error parsing product images:', error);
         imageUrls = [];
     }
 
@@ -66,8 +75,8 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
                         alt={`${productName} - Image ${index + 1}`}
                         fill
                         className={`object-contain p-4 transition-opacity duration-700 ease-in-out ${selectedIndex === index
-                                ? 'opacity-100 z-10'
-                                : 'opacity-0 z-0'
+                            ? 'opacity-100 z-10'
+                            : 'opacity-0 z-0'
                             }`}
                         priority={index === 0} // Only prioritize first image
                         onError={(e) => {
