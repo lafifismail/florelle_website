@@ -47,9 +47,17 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
         };
     }
 
-    const mainImage = Array.isArray(product.images)
-        ? product.images[0]
-        : (JSON.parse(product.images as string)[0] || '/images/placeholder-product.jpg');
+    let mainImage = '/images/placeholder-product.jpg';
+    try {
+        const images = Array.isArray(product.images)
+            ? (product.images as string[])
+            : JSON.parse(product.images as string);
+        if (Array.isArray(images) && images.length > 0) {
+            mainImage = images[0];
+        }
+    } catch {
+        mainImage = '/images/placeholder-product.jpg';
+    }
 
     return {
         title: product.name,
@@ -110,7 +118,13 @@ export default async function ProductPage({ params }: ProductPageProps) {
         '@context': 'https://schema.org',
         '@type': 'Product',
         name: product.name,
-        image: Array.isArray(product.images) ? product.images : JSON.parse(product.images as string),
+        image: (() => {
+            try {
+                return Array.isArray(product.images) ? product.images : JSON.parse(product.images as string);
+            } catch {
+                return ['/images/placeholder-product.jpg'];
+            }
+        })(),
         description: product.description,
         brand: {
             '@type': 'Brand',

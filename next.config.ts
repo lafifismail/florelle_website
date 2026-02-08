@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        pathname: '**',
+        pathname: '/**',
       },
     ],
     // Modern image formats for faster loading (Vercel Edge optimizes automatically)
