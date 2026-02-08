@@ -99,12 +99,7 @@ export const MobileMenu = ({ isAdmin = false }: MobileMenuProps) => {
 
     return (
         <div className="md:hidden">
-            <button
-                onClick={toggleMenu}
-                className="p-2 text-charcoal"
-                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                suppressHydrationWarning
-            >
+            <button onClick={toggleMenu} className="p-2 text-charcoal">
                 <Menu size={24} />
             </button>
 

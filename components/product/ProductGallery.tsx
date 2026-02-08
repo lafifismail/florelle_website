@@ -16,18 +16,9 @@ export default function ProductGallery({ images, productName }: ProductGalleryPr
         if (Array.isArray(images)) {
             imageUrls = images;
         } else if (typeof images === 'string') {
-            const parsed = JSON.parse(images);
-            if (Array.isArray(parsed)) {
-                imageUrls = parsed;
-            }
-        } else if (images && typeof images === 'object') {
-            // Handle Prisma Json type that might return an object
-            if (Array.isArray(images)) {
-                imageUrls = images;
-            }
+            imageUrls = JSON.parse(images);
         }
-    } catch (error) {
-        console.error('Error parsing product images:', error);
+    } catch {
         imageUrls = [];
     }
 

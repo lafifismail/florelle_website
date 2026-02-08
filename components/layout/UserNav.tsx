@@ -8,6 +8,19 @@ import { User } from 'lucide-react';
 export const UserNav = () => {
     const { data: session } = useSession();
     const [isPressed, setIsPressed] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
+    React.useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) {
+        return (
+            <div className="p-2 relative">
+                <User size={20} strokeWidth={1.5} className="text-charcoal/80" />
+            </div>
+        );
+    }
 
     return (
         <Link
@@ -25,7 +38,6 @@ export const UserNav = () => {
                     : 'hover:text-gold'
                 }
             `}
-            suppressHydrationWarning
         >
             <User
                 size={20}

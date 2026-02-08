@@ -33,14 +33,13 @@ const nextConfig: NextConfig = {
   // Custom headers for static assets caching
   async headers() {
     return [
-      // DISABLED: This pattern is too aggressive and blocks images from /public
-      // {
-      //   // Cache static images for 1 year
-      //   source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
-      //   headers: [
-      //     { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
-      //   ],
-      // },
+      {
+        // Cache static images for 1 year
+        source: '/:all*(svg|jpg|jpeg|png|webp|avif|gif|ico)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }
+        ],
+      },
       {
         // Cache Next.js static files for 1 year
         source: '/_next/static/:path*',

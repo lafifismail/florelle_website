@@ -3,7 +3,7 @@ import Link from "next/link";
 import { DollarSign, Clock, AlertCircle, Package, Star } from "lucide-react";
 import PromoSettings from '@/components/admin/PromoSettings';
 import { getSiteSettings } from '@/lib/actions/settings';
-import { FeaturedProductsManager } from '@/components/admin/FeaturedProductsManager';
+import { Navbar } from '@/components/layout/Navbar';
 
 export default async function AdminDashboard() {
     // 1. Fetch Key Metrics
@@ -26,22 +26,6 @@ export default async function AdminDashboard() {
     });
 
     const siteSettings = await getSiteSettings();
-
-    // Fetch featured products and all products for the manager
-    const featuredProducts = await prisma.product.findMany({
-        where: { isFeatured: true },
-        select: { id: true, name: true, price: true, images: true, isFeatured: true, category: { select: { id: true, name: true } }, subcategory: true }
-    });
-
-    const allProducts = await prisma.product.findMany({
-        select: { id: true, name: true, price: true, images: true, isFeatured: true, category: { select: { id: true, name: true } }, subcategory: true },
-        orderBy: { name: 'asc' }
-    });
-
-    const categories = await prisma.category.findMany({
-        select: { id: true, name: true },
-        orderBy: { name: 'asc' }
-    });
 
     return (
         <div className="min-h-screen bg-off-white">
@@ -98,55 +82,50 @@ export default async function AdminDashboard() {
 
                     {/* Actions & Promo (Promo Hidden on Mobile) */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 md:mt-12">
-                        {/* Quick Actions - Compressed Layout */}
-                        <div className="bg-white p-4 md:p-6 shadow-sm border border-beige/20 rounded-sm flex flex-col order-2 md:order-1">
-                            <h3 className="font-serif text-xl border-b border-beige/10 pb-3 mb-3">Actions Rapides</h3>
-                            <div className="grid grid-cols-1 gap-2">
-                                {/* Compact Link Cards */}
-                                <Link href="/admin/reviews" className="flex items-center justify-between p-3 bg-off-white hover:bg-gold/10 rounded-sm border border-transparent hover:border-gold/30 transition-all group">
-                                    <div className="flex items-center gap-2">
-                                        <div className="bg-white p-1.5 rounded-full text-gold group-hover:text-charcoal transition-colors">
-                                            <Star size={16} />
+                        {/* Quick Actions */}
+                        <div className="bg-white p-6 md:p-8 shadow-sm border border-beige/20 rounded-sm min-h-[300px] flex flex-col order-2 md:order-1">
+                            <h3 className="font-serif text-xl border-b border-beige/10 pb-4 mb-4">Actions Rapides</h3>
+                            <div className="flex-grow grid grid-cols-1 gap-4">
+                                <Link href="/admin/reviews" className="flex items-center justify-between p-4 bg-off-white hover:bg-gold/10 rounded-sm border border-transparent hover:border-gold/30 transition-all group">
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-white p-2 rounded-full text-gold group-hover:text-charcoal transition-colors">
+                                            <Star size={20} />
                                         </div>
                                         <div>
-                                            <p className="font-medium text-sm text-charcoal">Gérer les Avis</p>
+                                            <p className="font-bold text-charcoal">Gérer les Avis</p>
+                                            <p className="text-xs text-charcoal/50">Modération</p>
                                         </div>
                                     </div>
                                     {pendingReviews > 0 && (
-                                        <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full animate-pulse">
+                                        <span className="bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full animate-pulse">
                                             {pendingReviews}
                                         </span>
                                     )}
                                 </Link>
 
-                                <Link href="/admin/products" className="flex items-center justify-between p-3 bg-off-white hover:bg-gold/10 rounded-sm border border-transparent hover:border-gold/30 transition-all group">
-                                    <div className="flex items-center gap-2">
-                                        <div className="bg-white p-1.5 rounded-full text-charcoal group-hover:text-gold transition-colors">
-                                            <Package size={16} />
+                                <Link href="/admin/products" className="flex items-center justify-between p-4 bg-off-white hover:bg-gold/10 rounded-sm border border-transparent hover:border-gold/30 transition-all group">
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-white p-2 rounded-full text-charcoal group-hover:text-gold transition-colors">
+                                            <Package size={20} />
                                         </div>
                                         <div>
-                                            <p className="font-medium text-sm text-charcoal">Gérer les Produits</p>
+                                            <p className="font-bold text-charcoal">Gérer les Produits</p>
+                                            <p className="text-xs text-charcoal/50">Catalogue & Stock</p>
                                         </div>
                                     </div>
                                 </Link>
 
-                                <Link href="/admin/orders" className="flex items-center justify-between p-3 bg-off-white hover:bg-gold/10 rounded-sm border border-transparent hover:border-gold/30 transition-all group">
-                                    <div className="flex items-center gap-2">
-                                        <div className="bg-white p-1.5 rounded-full text-blue-500 group-hover:text-gold transition-colors">
-                                            <Clock size={16} />
+                                <Link href="/admin/orders" className="flex items-center justify-between p-4 bg-off-white hover:bg-gold/10 rounded-sm border border-transparent hover:border-gold/30 transition-all group">
+                                    <div className="flex items-center gap-3">
+                                        <div className="bg-white p-2 rounded-full text-blue-500 group-hover:text-gold transition-colors">
+                                            <Clock size={20} />
                                         </div>
                                         <div>
-                                            <p className="font-medium text-sm text-charcoal">Commandes</p>
+                                            <p className="font-bold text-charcoal">Commandes</p>
+                                            <p className="text-xs text-charcoal/50">Suivi et statuts</p>
                                         </div>
                                     </div>
                                 </Link>
-
-                                {/* Featured Products Manager */}
-                                <FeaturedProductsManager
-                                    initialFeatured={featuredProducts as any}
-                                    allProducts={allProducts as any}
-                                    categories={categories}
-                                />
                             </div>
                         </div>
 

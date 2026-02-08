@@ -59,6 +59,19 @@ export const SearchBar = () => {
         }, 150);
     };
 
+    if (!mounted) {
+        return (
+            <div ref={containerRef} className="relative flex items-center">
+                <button
+                    className="p-2 rounded-full transition-all duration-150 z-20 relative text-charcoal hover:text-gold"
+                    aria-label="Rechercher"
+                >
+                    <Search size={20} strokeWidth={1.5} />
+                </button>
+            </div>
+        );
+    }
+
     return (
         <div ref={containerRef} className="relative flex items-center">
             {/* Desktop & Mobile Toggle Button */}
@@ -77,7 +90,6 @@ export const SearchBar = () => {
                     }
                 `}
                 aria-label="Rechercher"
-                suppressHydrationWarning
             >
                 {isOpen ? <X size={20} strokeWidth={1.5} /> : <Search size={20} strokeWidth={1.5} />}
             </button>
@@ -90,7 +102,6 @@ export const SearchBar = () => {
                     md:right-0 md:origin-right
                     max-md:fixed max-md:top-[64px] max-md:left-0 max-md:w-full max-md:h-16 max-md:border-b max-md:border-gray-100 max-md:justify-center max-md:px-4 max-md:bg-white max-md:translate-y-0
                 `}
-                suppressHydrationWarning
             >
                 <form onSubmit={handleSubmit} className="w-full h-full flex items-center">
                     <input

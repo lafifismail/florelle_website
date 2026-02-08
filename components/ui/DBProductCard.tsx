@@ -40,19 +40,10 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
             // Already an array from Json type
             imageUrls = product.images;
         } else if (typeof product.images === 'string') {
-            // It's a JSON string, parse it
-            const parsed = JSON.parse(product.images);
-            if (Array.isArray(parsed)) {
-                imageUrls = parsed;
-            }
-        } else if (product.images && typeof product.images === 'object') {
-            // It's already a parsed object (e.g., from JSON type in some Prisma queries)
-            if (Array.isArray(product.images)) {
-                imageUrls = product.images;
-            }
+            // Legacy string format
+            imageUrls = JSON.parse(product.images);
         }
-    } catch (error) {
-        console.error('Error parsing product images for', product.name, ':', error);
+    } catch {
         imageUrls = [];
     }
 
