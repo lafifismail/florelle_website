@@ -67,6 +67,7 @@ export const DBProductCard = ({ product }: DBProductCardProps) => {
                     src={mainImage}
                     alt={product.name}
                     fill
+                    unoptimized={true}
                     sizes="(max-width: 768px) 50vw, 25vw"
                     loading="lazy"
                     quality={80}
