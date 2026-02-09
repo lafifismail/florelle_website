@@ -61,7 +61,7 @@ export async function upsertProduct(data: {
                     categoryId: data.categoryId,
                     subcategory: data.subcategory as any || null,
                     isFeatured: data.isFeatured || false,
-                    images: data.images as any, // Store array directly as Json
+                    images: JSON.stringify(data.images), // Convert array to JSON string
                 }
             });
         } else {
@@ -85,7 +85,7 @@ export async function upsertProduct(data: {
                     categoryId: data.categoryId,
                     subcategory: data.subcategory as any || null,
                     isFeatured: data.isFeatured || false,
-                    images: data.images as any // Store array directly as Json
+                    images: JSON.stringify(data.images) // Convert array to JSON string
                 }
             });
         }
