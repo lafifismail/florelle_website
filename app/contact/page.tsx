@@ -87,7 +87,7 @@ export default function ContactPage() {
                                     <h3 className="font-bold text-sm uppercase tracking-wider mb-2">Service Client Digital</h3>
                                     <div className="text-gray-500 font-light leading-relaxed space-y-1">
                                         <p><a href="mailto:info@florelle.ma" className="hover:text-black transition-colors">info@florelle.ma</a></p>
-                                        <p><a href="tel:+212600000000" className="hover:text-black transition-colors">+212 6 XX XX XX XX</a></p>
+                                        <p><a href="tel:+212663057739" className="hover:text-black transition-colors">+212 6 XX XX XX XX</a></p>
                                     </div>
                                 </div>
                             </div>

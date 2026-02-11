@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const WhatsAppButton = () => {
-    const phoneNumber = "+212600000000"; // Placeholder Moroccan number
+    const phoneNumber = "+212663057739"; // Placeholder Moroccan number
     const message = encodeURIComponent("Bonjour Florelle, je souhaiterais avoir plus d'informations.");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
